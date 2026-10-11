@@ -1,0 +1,880 @@
+Keybinds: {
+	神谕牌.DisplayName: Open/Close Oracle Card Interface
+	神谕牌特殊能力.DisplayName: Oracle Card Special Ability
+	神谕牌Q技能.DisplayName: Oracle Card Q Skill
+	神谕牌E技能.DisplayName: Oracle Card E Skill
+}
+
+Buffs: {
+	BaoJinBi_Buff: {
+		DisplayName: Gold Explosion Buff
+		Description: Attacks have a chance to drop gold coins.
+	}
+
+	Buff_DaDi: {
+		DisplayName: Spine of Bedrock
+		Description: Immune to many negative effects, gain an earth shield based on defense.
+		DetailedDescription:
+			'''
+			• Earth Blessing
+			• Provides shield based on defense
+			Remaining time: {0}
+			'''
+	}
+
+	Buff_FenZheng: {
+		DisplayName: Spear of Divine Punishment
+		Description: Increases melee stats, converts defense to health, taunts enemies.
+	}
+
+	Buff_FuShi: {
+		DisplayName: Throne of the World
+		Description:
+			'''
+			Provides high stat bonuses and gains the effects of all Oracle Cards.
+			Disables the effects of other Oracle Cards.
+			'''
+	}
+
+	Buff_GuiJi: {
+		DisplayName: Flipping Coin
+		Description: Grants invisibility, +15% movement speed, chance to not consume Treasure Bag, attacks mark 'Gold Explosion'.
+	}
+
+	Buff_HaiYang: {
+		DisplayName: Overflowing Cup
+		Description: Unrestricted movement in water, damage doubled in water/rain.
+	}
+
+	Buff_LangMan: {
+		DisplayName: Golden Cocoon
+		Description:
+			'''
+			Increases movement speed.
+			Higher attack speed gives higher returns.
+			'''
+	}
+
+	Buff_LiXing: {
+		DisplayName: Branch of Division
+		Description: Increases ranged stats, attacks apply debuffs.
+	}
+
+	Buff_LvFa: {
+		DisplayName: Scales of Justice
+		Description:
+			'''
+			Can trigger double damage, immune to Mana Sickness.
+			Skill: Swap health and mana, bindable in controls.
+			'''
+	}
+
+	Buff_MenJing: {
+		DisplayName: Gate of Myriad Paths
+		Description:
+			'''
+			More summons = more damage.
+			Skill: Duplicate all summons, bindable in controls.
+			'''
+	}
+
+	Buff_SiWang: {
+		DisplayName: Ash-Grey Hand
+		Description: Lose health to increase damage, recover health to accumulate new buds, can cheat death, summon ghostly hand to drain life.
+	}
+
+	Buff_SuiYue: {
+		DisplayName: Veil of Eternal Night
+		Description:
+			'''
+			Increases vulnerability for self and enemies over time.
+			Skill: Time Rewind, bindable in controls.
+			'''
+	}
+
+	Buff_TianKong: {
+		DisplayName: Eye of Dusk and Dawn
+		Description: Infinite flight, increased damage on sunny days, increased crit in thunderstorms.
+	}
+
+	MimiBuff: {
+		DisplayName: Mimi's Cheer
+		Description: Mimi cheers you on, providing dodge ability and +4% crit chance.
+		DetailedDescription:
+			'''
+			• Mimi cheers for you
+			• Provides dodge ability and +4% crit chance
+			Remaining time: {0}
+			'''
+	}
+
+	XilianDebuff: {
+		DisplayName: Reminiscence
+		Description: Blessing from Xilian.
+	}
+
+	SpeedLieBuff: {
+		DisplayName: Speed Hunter Buff
+		Description: Increases hunting speed.
+	}
+}
+
+Items: {
+	SFeirSummonItem: {
+		DisplayName: SFeir Summon
+		Tooltip: Summon SFeir
+	}
+
+	C8: {
+		DisplayName: Oath of 「∞」
+		Tooltip: Memories await the awakening of the shooting star.
+	}
+
+	RemembrancersQuill: {
+		DisplayName: Quill of Memory
+		Tooltip: Perhaps you can write something with it.
+	}
+
+	Shenyupai_Zu: {
+		DisplayName: Oracle Card Deck
+		Tooltip: A deck containing many Oracle Cards.
+	}
+
+	// 其他物品可能需要添加，但基于自动生成框架，目前只有这些
+	Ruwosuoshu: {
+	}
+
+	XilianTouxiang: {
+		DisplayName: Xilian Touxiang
+		Tooltip: ""
+	}
+
+	BlackDomainItem: {
+		DisplayName: Black Domain Item
+		Tooltip: ""
+	}
+}
+
+NPCs: {
+	SFeir.DisplayName: SFeir
+
+	//迷迷
+	Mimi: {
+		DisplayName: Mimi
+		Bestiary: A pink little fairy that will help you by your side.
+
+		System: {
+			HeardCall: Mimi heard your call...
+			EnterIdleMode: Mimi couldn't find a player to follow and is resting.
+			Transformed: Mimi has transformed into Xilian!
+			SwitchMode:
+				'''
+				Current topic: {0}
+				Click the right side to chat about the topic.
+				'''
+
+			ToggleIdle: {
+				Idle: {
+					Early: meme me... (I, rest...)
+					Mid: meme rest... (I, rest...)
+					Fluent: I'll take a rest...
+				}
+
+				Active: {
+					Early: meme me! (I, ready! Good!)
+					Mid: meme ready! (I'm ready! Okay!)
+					Fluent: I'm ready for the adventure! ♪
+				}
+			}
+		}
+
+		// 系统提示文本
+		CallResponse: {
+			Idle: {
+				Early: meme! (I'm coming!)
+				Mid: meme coming! (I'm coming!)
+				Fluent: Mee! I'm coming!
+			}
+
+			Active: {
+				Early: meme! (I'm here!)
+				Mid: meme here! (I'm here!)
+				Fluent: Mee! I'm here!
+			}
+		}
+
+		// 呼唤响应
+		Dialogue: {
+			FirstMeeting: {
+				Early: me! meme~ (Hello, I'm Mimi!)
+				Mid: me! meme~ (Hello, I'm Mimi!)
+				Fluent: me! meme~ (Hello, I'm Mimi!)
+			}
+
+			Daily: {
+				Early:
+					'''
+					me mememe meme~ (Mimi Mimi~)
+					meme? (Mimi?)
+					me me me~ (Flower, bud, Mi~)
+					meme meme! (Happy)
+					me? me~ (Mimi?)
+					'''
+				Mid:
+					'''
+					meme help, me! (I'll help you.)
+					me happy, meme~ (Happy today~)
+					meme me together! (Adventure together!)
+					me wait, meme... (I'll wait for you...)
+					meme protect, me! (I'll protect you!)
+					'''
+				Fluent:
+					'''
+					The weather is lovely today!
+					I'm so happy to be with you.
+					Shall we go on an adventure?
+					I'll always be with you!
+					Need any help?
+					'''
+			}
+
+			Growth: {
+				Early:
+					'''
+					me me... (Will I change?)
+					meme? (Change?)
+					me me me! (I want to be stronger!)
+					meme me~ (I'll try hard~)
+					'''
+				Mid:
+					'''
+					meme look forward... (I'm looking forward to it.)
+					meme change... (How will I change?)
+					meme think... (I want to be stronger!)
+					meme effort~ (I'll do my best.)
+					'''
+				Fluent:
+					'''
+					I believe the next journey will be full of rewards!
+					I wonder how I will change...
+					I want to become stronger and protect you!
+					I will work hard to grow!
+					'''
+			}
+		}
+
+		// 对话内容
+		FunctionModes: {
+			Chat: {
+				DisplayName: Chat
+				Early: meme! (Chat!)
+				Mid: meme chat! (Let's chat!)
+				Fluent: Let's have a chat!
+			}
+
+			IdleToggle: {
+				DisplayName: Toggle Idle
+
+				Idle: {
+					Early: meme me... (I want to rest...)
+					Mid: meme rest... (I want to rest a bit.)
+					Fluent: I want to rest a bit...
+				}
+
+				Active: {
+					Early: meme me! (I'm ready! Good!)
+					Mid: meme ready! (I'm ready! Okay!)
+					Fluent: I'm ready!
+				}
+			}
+
+			Transform: {
+				DisplayName: Transform
+
+				Transform: {
+					Early: meme me? (Transform?)
+					Mid: meme change? (Transform?)
+					Fluent: Want to transform?
+				}
+
+				Growth: {
+					Early: meme?
+					Mid: meme?
+					Fluent: Mimi?
+				}
+			}
+
+			Inventory: {
+				DisplayName: Inventory
+				Early: meme me? (Inventory?)
+				Mid: meme bag? (Open inventory?)
+				Fluent: Want to open the bag?
+			}
+
+			Expressions: {
+				DisplayName: Expressions
+				Early: meme me me! (I can make expressions!)
+				Mid: meme expressions! (I can make lots of expressions!)
+				Fluent: I can make lots of expressions!
+			}
+
+			Quest: {
+				DisplayName: Quest
+
+				CanSubmit: {
+					Early: meme me? (Collected?)
+					Mid: meme collect? (Collected?)
+					Fluent: Have you collected everything?
+				}
+
+				NeedHint: {
+					Early: meme me? (Hint?)
+					Mid: meme hint? (Need a hint?)
+					Fluent: Need a hint?
+				}
+
+				HasSomethingToSay: {
+					Early: meme me me! (I have something to say.)
+					Mid: meme have words~ (I have something to tell you.)
+					Fluent: I have something to tell you~
+				}
+
+				Wish: {
+					Early: meme meme! (Thank you!)
+					Mid: meme thank! (Thank you.)
+					Fluent: Thank you for all your help!
+				}
+
+				Complete: {
+					Early: meme meme! (Thank you!)
+					Mid: meme thank! (Thank you!)
+					Fluent: Thank you for all your help!
+				}
+
+				Progress: {
+					Early:
+						'''
+						me me... (No rush)
+						me me (need):
+
+						'''
+					Mid:
+						'''
+						meme no rush... (No rush, I'll wait for you.)
+						meme need:
+
+						'''
+					Fluent:
+						'''
+						I'll wait for you.
+						Need:
+
+						'''
+				}
+			}
+		}
+
+		// 功能模式
+		Buttons: {
+			ChangeTopic: Change topic
+			Chat: Chat
+			AdventureTogether: Let's go on an adventure!
+			Rest: Rest a bit~
+			Transform: Transform!
+			Growth: Grow
+			OpenBackpack: Open bag
+			MakeExpression: Make an expression~
+			Submit: Submit
+			Hint: Hint
+			HasSomethingToSay: Mimi has something to say
+			Wish: Wish
+		}
+
+		// 按钮文本
+		Expressions: {
+			Wink: {
+				Early:
+					'''
+					me~
+					me♪
+					'''
+				Mid:
+					'''
+					me~
+					mi♪
+					'''
+				Fluent:
+					'''
+					Mi~
+					Mi♪
+					'''
+			}
+
+			Happy: {
+				Early:
+					'''
+					meme meme! (Happy!)
+					me me~ (So happy)
+					'''
+				Mid:
+					'''
+					Happy meme! (So happy!)
+					me happy~ (Very happy)
+					'''
+				Fluent:
+					'''
+					So happy!
+					I'm so happy with you~
+					'''
+			}
+
+			Thinking: {
+				Early:
+					'''
+					me... (Thinking)
+					meme... (Thinking)
+					'''
+				Mid:
+					'''
+					meme think... (Thinking about something.)
+					me think... (Thinking)
+					'''
+				Fluent:
+					'''
+					Hmm... let me think.
+					Thinking~
+					'''
+			}
+
+			Confused: {
+				Early:
+					'''
+					me? (Confused)
+					meme? (?)
+					'''
+				Mid:
+					'''
+					meme don't understand... (Not quite understand.)
+					me confused? (A bit confused.)
+					'''
+				Fluent:
+					'''
+					Mi? Not quite understand.
+					A bit confused...
+					'''
+			}
+
+			Angry: {
+				Early:
+					'''
+					meme! me! (Angry)
+					me me! (Not happy)
+					'''
+				Mid:
+					'''
+					meme angry! (A bit angry.)
+					me not happy! (Not very happy.)
+					'''
+				Fluent:
+					'''
+					Hmph!
+					Not happy!
+					'''
+			}
+
+			MimiGag: {
+				Early:
+					'''
+					me—— (—v—)
+					me—— (Mimi...)
+					'''
+				Mid:
+					'''
+					me—— (—v—)
+					me—— (Mimi...)
+					'''
+				Fluent:
+					'''
+					meme— (—v—)
+					me—— (Mimi...)
+					'''
+			}
+
+			Sleeping: {
+				Early:
+					'''
+					me...zzZ
+					meme zzZ
+					'''
+				Mid:
+					'''
+					meme sleep... (So sleepy)
+					me tired... (Want to sleep)
+					'''
+				Fluent:
+					'''
+					So sleepy...zzZ
+					I'm a bit tired...
+					'''
+			}
+
+			Serious: {
+				Early:
+					'''
+					me!
+					meme!
+					'''
+				Mid:
+					'''
+					meme serious! (Serious face)
+					me serious (Serious mode.)
+					'''
+				Fluent:
+					'''
+					Serious mode!
+					I'm very serious now!
+					'''
+			}
+
+			Default: {
+				Early:
+					'''
+					meme!
+					me? (What's wrong?)?
+					meme me~ (Here.)~
+					'''
+				Mid:
+					'''
+					me mi!
+					me? what, me?
+					meme this, me~ (Here.)
+					'''
+				Fluent:
+					'''
+					Mimi!
+					Hm? What's up?
+					I'm here~
+					'''
+			}
+		}
+
+		// 迷迷快乐值城镇NPC心情文本
+		TownNPCMood: {
+			Content: (Happy)
+			NoHome: (Free)
+			FarFromHome: (Carefree)
+			LoveSpace: (Fluttering happily)
+			DislikeCrowded: (Flying slowly)
+			HateCrowded: (Can't fly anymore)
+			LikeNPC_Princess: (Likes {NPCName})
+			Princess_LovesNPC: (Likes {NPCName})
+		}
+	}
+
+	//昔涟
+	Xilian: {
+		DisplayName: Xilian
+		// 图鉴描述
+		Bestiary:
+			'''
+			Shooting stars streak across the night sky, rippling the river of life with thirteen hues.
+			She plants seeds of memory, letting past flowers bloom in tomorrow—
+			"And then, let's write a poem unlike any before♪"
+			'''
+		Dialogue.Daily:
+			'''
+			Want to chat with me?
+			Hi~ Did you miss me?
+			Remember, when you run into trouble, call my name♪
+			Hmm~ yeah↘ yeah↗ hmm yeah—hmm uh—hmm uh—(Once made a wish, waiting for you to appear)
+			The guide always gives me gentle advice, like a talking tree♪
+			Planting flowers with the Dryad sister makes the wind smell sweet~
+			The Princess's dress is my favorite pink, we promised to have tea together♪
+			The Angler kid talks tough, but I know he just wants someone to play with♪
+			The Demolitionist always says it's dangerous, but he's the most careless—I'll bring you a charm next time?
+			The Arms Dealer's gaze is a bit strange… but after I helped him organize his bullet boxes, he seemed a little kinder?
+			The Pirate's parrot speaks so well—"You're so pretty!"—See, even he says so♪
+			The Tax Collector isn't bad, just lonely. When I greet him, his eyes light up♪
+			The Zoologist always wants to touch my ears when I'm in Mimi form… hehe, it actually feels quite nice♪
+			The Stylist's hands are so light and soft, I feel like a new person after each haircut~
+			The Dye Trader knows so much about pink! We chatted all afternoon, she promised to mix a "Xilian Special Pink" for me♪
+			The Bartender pours me a little ale, I only take a sip and leave the rest for you♪
+			The Cyborg speaks oddly… but when he says "Detected warm life signal," my heart warms too♪
+			The Golfer taught me to swing, but the ball flew into the bushes—he said "You did well," hehe♪
+			The Wizard says things I don't understand… but the crystal ball he gave me glows at night, like stars♪
+			The Witch Doctor is so serious when making charms, I barely dared to breathe watching him—
+			The Clothier speaks like an old man, but his needlework is amazing! He offered to teach me to embroider little flowers♪
+			The Truffle says others want to eat him… hehe, I won't. I just want to hear his mushroom stories♪
+			The Mechanic fixes things while I hand her wrenches—though I handed the wrong ones several times, she didn't get mad!
+			The Party Girl is too enthusiastic! I was dragged into an hour of dancing, my legs are still sore… but it was so fun♪
+			The Goblin Tinkerer hammers in the corner, I watch from afar and don't dare disturb—but his little clockwork toys are so fun!
+			The Nurse talks tough but her hands are gentle when bandaging. "Be careful next time!"—hehe, I know♪
+			The Painter gave me a painting! It's just a few pink flowers, but I hang it up and look at it every day♪
+			The Steampunker's hat is so tall! I look up at her, she looks down and says "Little girl, who are you looking for?"—hehe, I'm not little!
+			The Traveling Merchant always has odd things, I could squat at his stall all day~
+			Santa Claus said "Good children get gifts," I secretly asked him, "Can I have a star?" He laughed for a long time♪
+			The Skeleton Merchant sells strange things… but he's stranger—a skeleton afraid of rain. I want to hold an umbrella for him♪
+			'''
+
+		// 功能模式名称
+		FunctionModes: {
+			Chat: {
+				DisplayName: Chat
+				Dialogue: Want to chat with me~
+			}
+
+			OracleCard: {
+				DisplayName: Oracle Cards
+				Dialogue: I have many magical little cards~
+			}
+
+			Shop: {
+				DisplayName: Shop
+				Dialogue: My little shop is open, want to take a look?
+			}
+
+			Transform: {
+				DisplayName: Transform
+				Enabled: I can turn back into Mimi~
+				Disabled: Wow, cheating right in front of me! No no~ Go defeat the Wall of Flesh first~
+			}
+		}
+
+		// 按钮文本
+		Buttons: {
+			ChangeTopic: Change topic
+			Chat: Chat
+			OracleCard: Oracle Cards
+			Shop: Shop
+			Transform: Transform
+		}
+
+		// 昔涟城镇NPC心情文本
+		TownNPCMood: {
+			Content: ♪
+			NoHome: I'll look for a place to rest.
+			FarFromHome: A bit far from home.
+			LoveSpace: So spacious, I feel relaxed.
+			DislikeCrowded: A bit hard to breathe...
+			HateCrowded: I'm... suffocating......
+			LoveBiome: I really love {BiomeName}.
+			LikeBiome: I like {BiomeName}.
+			LoveNPC: I really love {NPCName}.
+			LikeNPC_Princess: I like {NPCName}.
+			Princess_LovesNPC: I love {NPCName}.
+			DislikeBiome: 我不喜欢{BiomeName}。
+			LikeNPC: 我喜欢{NPCName}。
+		}
+	}
+}
+
+Projectiles: {
+	FateCoin.DisplayName: Fate Coin
+	C8X.DisplayName: Reminiscence
+	ClearingAuraProjectile.DisplayName: Clearing Aura
+	Mimi_zhua.DisplayName: Mimi Claw
+	Mimi_zhua_big.DisplayName: Mimi Claw (Big)
+	QuillInkProjectile.DisplayName: Ink Projectile
+	Mimi_zhua_NoWall.DisplayName: Mimi_zhua_ No Wall
+	C13x.DisplayName: C13x
+}
+
+Configs: {
+	ShenyupaiConfig: {
+		DisplayName: Oracle Card Settings
+		Headers.KeybindTips: Keybind Tips Settings
+
+		ShowKeybindTips: {
+			Label: Show Keybind Tips
+			Tooltip: Display keybind tips on screen for current skills.
+		}
+
+		KeybindPosition: {
+			Label: Keybind Tips Position
+			Tooltip: Adjust the display position of keybind tips on screen.
+		}
+
+		TipScale: {
+			Label: Tip Size
+			Tooltip: Adjust the display size of keybind tips.
+		}
+	}
+
+	Mimi_Config: {
+		DisplayName: Mimi Settings
+		Headers.MimiFollowSettings: Mimi Follow Settings
+
+		MimiFollowDistanceMode: {
+			Label: Follow Distance Mode
+			Tooltip:
+				'''
+				Choose the distance mode for Mimi to follow you:
+				Original: Follow slightly ahead to the side
+				Behind: Follow behind you
+				'''
+		}
+
+		BehindFollowDistance: {
+			Label: Behind Follow Distance
+			Tooltip: When 'Behind' mode is selected, the distance (in pixels) behind the player.
+		}
+
+		OriginalFollowOffsetX: {
+			Label: Original Follow X Offset
+			Tooltip: When 'Original' mode is selected, the X offset (in pixels) from the player.
+		}
+
+		FollowOffsetY: {
+			Label: Follow Y Offset
+			Tooltip: Y offset (in pixels) when following, negative means above.
+		}
+
+		EnableMimiCallSystem: {
+			Label: Enable Mimi Call System
+			Tooltip: When enabled, typing 'Mimi' in chat will call Mimi.
+		}
+
+		StrictCallDetection: {
+			Label: Strict Call Detection Mode
+			Tooltip: When enabled, only detects calls in pure chat input to avoid mod conflicts.
+		}
+
+		CallCooldown: {
+			Label: Call Cooldown
+			Tooltip: Cooldown between calls (in seconds).
+		}
+	}
+
+	FollowDistanceMode: {
+		Tooltip: ""
+
+		Original: {
+			Label: Original (Side-Ahead)
+			Tooltip: Mimi follows to the side and ahead of the player.
+		}
+
+		Behind: {
+			Label: Behind
+			Tooltip: Mimi follows behind the player.
+		}
+	}
+
+	UISettings: {
+		// DisplayName: U I Settings
+		// Headers.Dialogue: Use Custom Dialogue Header
+		
+		UseCustomDialogue: {
+			Label: Use Custom Dialogue
+			Tooltip: ""
+		}
+
+		DisplayName: U I Settings
+		Headers.Dialogue: Use Custom Dialogue Header
+	}
+}
+
+Config: {
+	Header: {
+		MimiFollow: Mimi Follow Settings
+		CallSystem: Mimi Call System
+	}
+}
+
+// ===== 系统本地化 =====
+Systems: {
+	XiLian_Systems: {
+		Xinyuan: {
+			MimiQuest: {
+				// 系统提示
+				System: {
+					NewWish: Mimi has a new wish...
+					CanSpeak: Mimi can actually talk?! "Mi?! Umm... test, test, one two three, test test one two three... I don't know why, but it's amazing!"
+				}
+
+				// 任务1：暗淡的吊坠
+				LifeCrystalStage1: {
+					Title: Dim Pendant
+					Description: me...meme me? (Pendant, dim. Red, stone. Help.)
+					CompletionText: The pendant reacted! Now Mimi can unleash a huge Mimi Claw!
+					RewardDescription: Unlocks Big Mimi Claw attack
+					LockedHint: (No unlock condition yet)
+				}
+
+				// 任务2：微弱的光
+				LifeCrystalStage2: {
+					Title: Faint Light
+					Description: meme light! me not enough, meme~ (Pendant, glowing! But, not enough... Please, help again! Pretty please~)
+					CompletionText: The pendant is shiny! Now Mimi can provide you with stat bonuses!
+					RewardDescription: Unlocks stat buff ability
+					LockedHint: Requires defeating Brain of Cthulhu or Eater of Worlds
+				}
+
+				// 任务3：妖精魔法
+				LifeCrystalStage3: {
+					Title: Fairy Magic
+					Description: Mi... Life Crystals are less effective... Let's try Mana Stars? But maybe need a bit of Life Crystal too.
+					CompletionText: The pendant regained its power! Now Mimi can help you dodge dangers!
+					RewardDescription: Unlocks dodge ability
+					LockedHint: Requires defeating Skeletron
+				}
+			}
+		}
+
+		Xingtai: {
+			BossEventSystem: {
+				MimiResting: Mimi is resting and cannot help, but you can call her!
+				MimiComing: Mimi senses danger and is coming to help!
+				BattleEndDelay: Battle over? Mimi is sensing if there's still danger...
+				BattleResume: Battle continues!
+				BattleEnd: Battle ended, threat gone, Mimi relaxes.
+			}
+		}
+	}
+
+	//向导
+	GuideDialogue: {
+		GiveQuill:
+			'''
+			Hey, wait... I've been looking for you!
+			[c/FF6BCB:(The Guide pulls a purple-glowing quill from his pocket)]
+			This quill seems to have been searching for its owner...
+			I feel it radiates some kind of magic. Maybe you can use it to record important memories?
+			'''
+		ObtainedItem: "[c/FF6BCB:{0}] received [c/AA66FF:{1}] from the Guide!"
+		MimiLocked: You haven't met Mimi yet? I heard she appears by your side, maybe you need to do something first...
+		MimiUnlocked: I see Mimi following you, what a cute little one! She seems able to fight and make all kinds of expressions.
+		XilianUnlocked: Xilian is by your side, she seems to wield power from another world. Talking to her might get you Oracle Cards.
+	}
+}
+
+// ===== 杂项本地化 =====
+Common: {
+	Yes: Yes
+	No: No
+	Enabled: Enabled
+	Disabled: Disabled
+	TimeLeft: Remaining time: {0}
+}
+
+// ===== 界面文本本地化 =====
+UI: {
+	BookDataSystem: {
+		BuffAbilityUnlocked: Buff ability unlocked
+		DodgeAbilityUnlocked: Dodge ability unlocked
+	}
+
+	Shenyupai: {
+		CurrentCard: Current card: {0}
+		NoCardSelected: No card selected
+		BuffActive: Buff active
+	}
+}
+
+Biomes: {
+	BlackDomainBiome: {
+		DisplayName: Black Domain Biome
+		TownNPCDialogueName: the Black Domain Biome
+	}
+}
+
+Tiles.BlackDomainTile.MapEntry: Black Domain Tile

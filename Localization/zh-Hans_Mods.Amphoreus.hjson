@@ -1,0 +1,880 @@
+Keybinds: {
+	神谕牌.DisplayName: 打开/关闭神谕牌界面
+	神谕牌特殊能力.DisplayName: 神谕牌特殊能力
+	神谕牌Q技能.DisplayName: 神谕牌 Q 技能
+	神谕牌E技能.DisplayName: 神谕牌 E 技能
+}
+
+Buffs: {
+	BaoJinBi_Buff: {
+		DisplayName: 爆金币Buff
+		Description: 攻击时有一定概率爆出金币
+	}
+
+	Buff_DaDi: {
+		DisplayName: 磐岩之脊
+		Description: 免疫多种负面效果，获得基于防御力的大地护盾
+		DetailedDescription:
+			'''
+			• 大地祝福
+			• 按防御力提供护盾
+			剩余时间: {0}
+			'''
+	}
+
+	Buff_FenZheng: {
+		DisplayName: 天谴之矛
+		Description: 增加近战属性，防御转生命，嘲讽敌人
+	}
+
+	Buff_FuShi: {
+		DisplayName: 全世之座
+		Description:
+			'''
+			提供高额属性加成，额外拥有所有神谕牌的效果
+			禁用其他神谕牌的效果
+			'''
+	}
+
+	Buff_GuiJi: {
+		DisplayName: 翻飞之币
+		Description: 可隐身移速+15%，概率不消耗宝藏袋，攻击标记'爆金币'
+	}
+
+	Buff_HaiYang: {
+		DisplayName: 满溢之杯
+		Description: 水中畅通无阻，水/雨中伤害翻倍
+	}
+
+	Buff_LangMan: {
+		DisplayName: 黄金之茧
+		Description:
+			'''
+			增加移速
+			攻速越高收益越高
+			'''
+	}
+
+	Buff_LiXing: {
+		DisplayName: 分裂之枝
+		Description: 增加远程属性，攻击附加减益
+	}
+
+	Buff_LvFa: {
+		DisplayName: 公正之秤
+		Description:
+			'''
+			可触发双倍伤害免疫魔力病
+			技能：交换生命与魔力，可在控件绑定键位
+			'''
+	}
+
+	Buff_MenJing: {
+		DisplayName: 万径之门
+		Description:
+			'''
+			拥有召唤物越多伤害越高
+			技能：复制所有召唤物，可在控件绑定键位
+			'''
+	}
+
+	Buff_SiWang: {
+		DisplayName: 灰黯之手
+		Description: 损失生命增加伤害，恢复生命积攒新蕊，可免疫死亡，可召唤鬼手汲取生命
+	}
+
+	Buff_SuiYue: {
+		DisplayName: 永夜之帷
+		Description:
+			'''
+			按时间增加自身与敌人的易伤比例
+			技能：时间回溯，可在控件绑定键位
+			'''
+	}
+
+	Buff_TianKong: {
+		DisplayName: 晨昏之眼
+		Description: 无限飞行，晴天增加伤害，雷雨增加暴击
+	}
+
+	MimiBuff: {
+		DisplayName: 迷迷的声援
+		Description: 迷迷为你加油，提供闪避能力，暴击率+4%
+		DetailedDescription:
+			'''
+			• 迷迷为你加油
+			• 提供闪避能力，暴击率+4%
+			剩余时间: {0}
+			'''
+	}
+
+	XilianDebuff: {
+		DisplayName: 追忆
+		Description: 来自昔涟的祝福
+	}
+
+	SpeedLieBuff: {
+		DisplayName: 速猎Buff
+		Description: 增加狩猎速度
+	}
+}
+
+Items: {
+	SFeirSummonItem: {
+		DisplayName: SFeir召唤物
+		Tooltip: 召唤SFeir
+	}
+
+	C8: {
+		DisplayName: 「∞」的誓约
+		Tooltip: 记忆等待被流星唤醒
+	}
+
+	RemembrancersQuill: {
+		DisplayName: 记忆之笔
+		Tooltip: 或许你能用它写下些什么
+	}
+
+	Shenyupai_Zu: {
+		DisplayName: 神谕牌组
+		Tooltip: 包含多种神谕卡牌的牌组
+	}
+
+	// 其他物品可能需要添加，但基于自动生成框架，目前只有这些
+	Ruwosuoshu: {
+	}
+
+	XilianTouxiang: {
+		// DisplayName: Xilian Touxiang
+		// Tooltip: ""
+	}
+
+	BlackDomainItem: {
+		// DisplayName: Black Domain Item
+		// Tooltip: ""
+	}
+}
+
+NPCs: {
+	SFeir.DisplayName: SFeir
+
+	//迷迷
+	Mimi: {
+		DisplayName: 迷迷
+		Bestiary: 粉色的小妖精，会在你身边提供帮助。
+
+		System: {
+			HeardCall: 迷迷听到了你的呼唤...
+			EnterIdleMode: 迷迷没有找到可以跟随的玩家，正在原地休息
+			Transformed: 迷迷变成了昔涟！
+			SwitchMode:
+				'''
+				当前话题：{0}
+				请点击右侧聊对应的话题。
+				'''
+
+			ToggleIdle: {
+				Idle: {
+					Early: meme me...（我，休息...）
+					Mid: meme 休息...（人家。休息...）
+					Fluent: 人家休息一下...
+				}
+
+				Active: {
+					Early: meme me！（我，准备。好！）
+					Mid: meme 准备！（人家，准备。好啦！）
+					Fluent: 人家准备好一起冒险啦♪
+				}
+			}
+		}
+
+		// 系统提示文本
+		CallResponse: {
+			Idle: {
+				Early: meme！（我，来啦！）
+				Mid: meme 来了！（人家，来啦！）
+				Fluent: 迷！人家来啦！
+			}
+
+			Active: {
+				Early: meme！（我，在！）
+				Mid: meme 在！（人家，在这！）
+				Fluent: 迷！人家在这里！
+			}
+		}
+
+		// 呼唤响应
+		Dialogue: {
+			FirstMeeting: {
+				Early: me！meme~（你好，我。迷迷!）
+				Mid: me！meme~（你好，我。迷迷!）
+				Fluent: me！meme~（你好，我是。迷迷!）
+			}
+
+			Daily: {
+				Early:
+					'''
+					me mememe meme~（迷 迷迷迷 迷迷~）
+					meme？（迷迷？）
+					me me me~（朵，蕊，迷~）
+					meme meme！（开心）
+					me？me~（迷？）
+					'''
+				Mid:
+					'''
+					meme 帮，me！（人家，会，帮你。）
+					me 开心，meme~（今天，开心~）
+					meme me 一起！（一起，冒险！）
+					me 等，meme...（等你，回来...）
+					meme 保护，me！（人家，会。保护你！）
+					'''
+				Fluent:
+					'''
+					今天天气真好呢！
+					和你在一起真开心~
+					要一起去冒险吗？
+					人家会一直陪着你的！
+					有什么需要帮忙的吗？
+					'''
+			}
+
+			Growth: {
+				Early:
+					'''
+					me me...（我，会变？）
+					meme？（变化？）
+					me me me！（我，要，更强！）
+					meme me~（我，努力~）
+					'''
+				Mid:
+					'''
+					meme 期待...（人家，好期待。）
+					meme 变化...（会，怎么变？）
+					meme 想...（想，变得，更强！）
+					meme 努力~（人家，会努力。）
+					'''
+				Fluent:
+					'''
+					人家相信，下一趟旅途，一定会收获满满！
+					真期待呀...不知道人家又会产生怎样的变化？
+					想变得更强！保护你！
+					人家会努力成长的！
+					'''
+			}
+		}
+
+		// 对话内容
+		FunctionModes: {
+			Chat: {
+				DisplayName: 聊天
+				Early: meme！（聊天！）
+				Mid: meme 聊！（我们，聊天！）
+				Fluent: 我们来聊聊天吧！
+			}
+
+			IdleToggle: {
+				DisplayName: 闲置切换
+
+				Idle: {
+					Early: meme me...（我，想休息...）
+					Mid: meme 休息...（人家，想休息。一下。）
+					Fluent: 人家想休息一下...
+				}
+
+				Active: {
+					Early: meme me！（我，准备。好！）
+					Mid: meme 准备！（人家，准备。好啦！）
+					Fluent: 人家准备好啦！
+				}
+			}
+
+			Transform: {
+				DisplayName: 形态切换
+
+				Transform: {
+					Early: meme me？（变身？）
+					Mid: meme 变？（变身？）
+					Fluent: 要变身吗？
+				}
+
+				Growth: {
+					Early: meme？
+					Mid: meme？
+					Fluent: 迷迷？
+				}
+			}
+
+			Inventory: {
+				DisplayName: 背包
+				Early: meme me？（背包？）
+				Mid: meme 包？（打开，背包？）
+				Fluent: 要打开小背包吗？
+			}
+
+			Expressions: {
+				DisplayName: 表情互动
+				Early: meme me me！（我，会，表情！）
+				Mid: meme 表情！（会做，好多。表情！）
+				Fluent: 人家会做好多表情哦！
+			}
+
+			Quest: {
+				DisplayName: 任务话题
+
+				CanSubmit: {
+					Early: meme me？（收集，好了？）
+					Mid: meme 收集？（收集，好了？）
+					Fluent: 收集好了吗？
+				}
+
+				NeedHint: {
+					Early: meme me？（提示？）
+					Mid: meme 提示？（需要，提示？）
+					Fluent: 需要提示吗？
+				}
+
+				HasSomethingToSay: {
+					Early: meme me me！（我，有话。）
+					Mid: meme 有话~（人家，有话。想对，你说。）
+					Fluent: 人家有话想对你说~
+				}
+
+				Wish: {
+					Early: meme meme！（谢谢！）
+					Mid: meme 感谢！（谢谢，你。）
+					Fluent: 谢谢你一直以来的帮助！
+				}
+
+				Complete: {
+					Early: meme meme！（谢谢！）
+					Mid: meme 谢谢！（谢谢，你！）
+					Fluent: 谢谢你一直以来的帮助！
+				}
+
+				Progress: {
+					Early:
+						'''
+						me me...（不，急）
+						me me（需要）：
+
+						'''
+					Mid:
+						'''
+						meme 不急...（不急，人家。会等，你的。）
+						meme 要（需要）：
+
+						'''
+					Fluent:
+						'''
+						人家会等你的
+						需要：
+
+						'''
+				}
+			}
+		}
+
+		// 功能模式
+		Buttons: {
+			ChangeTopic: 换一个话题
+			Chat: 聊聊天
+			AdventureTogether: 一起冒险吧！
+			Rest: 休息一下~
+			Transform: 变身！
+			Growth: 成长
+			OpenBackpack: 打开小背包
+			MakeExpression: 做表情~
+			Submit: 提交
+			Hint: 提示
+			HasSomethingToSay: 迷迷有话想跟你说
+			Wish: 心愿
+		}
+
+		// 按钮文本
+		Expressions: {
+			Wink: {
+				Early:
+					'''
+					me~
+					me♪
+					'''
+				Mid:
+					'''
+					me~
+					迷♪
+					'''
+				Fluent:
+					'''
+					迷~
+					迷♪
+					'''
+			}
+
+			Happy: {
+				Early:
+					'''
+					meme meme！（开心！）
+					me me~（好开心）
+					'''
+				Mid:
+					'''
+					开心 meme！（好开心！）
+					me 开心~（特别，开心）
+					'''
+				Fluent:
+					'''
+					好开心！
+					和你在一起真开心~
+					'''
+			}
+
+			Thinking: {
+				Early:
+					'''
+					me...（思考）
+					meme...（想）
+					'''
+				Mid:
+					'''
+					meme 思考...（在想，事情。）
+					me 想...（思考）
+					'''
+				Fluent:
+					'''
+					迷...让我想想
+					思考中~
+					'''
+			}
+
+			Confused: {
+				Early:
+					'''
+					me？（疑惑）
+					meme？（？）
+					'''
+				Mid:
+					'''
+					meme 不懂...（不太，明白。）
+					me 困惑？（有点，困惑。）
+					'''
+				Fluent:
+					'''
+					迷？不太明白
+					有点困惑呢...
+					'''
+			}
+
+			Angry: {
+				Early:
+					'''
+					meme！me！（生气）
+					me me！（不高兴）
+					'''
+				Mid:
+					'''
+					meme 气！（有点，生气。）
+					me 不高兴！（不太，高兴。）
+					'''
+				Fluent:
+					'''
+					哼！
+					不高兴！
+					'''
+			}
+
+			MimiGag: {
+				Early:
+					'''
+					me——（—v—）
+					me——（迷...）
+					'''
+				Mid:
+					'''
+					me——（—v—）
+					me——（迷...）
+					'''
+				Fluent:
+					'''
+					meme—（—v—）
+					me——（迷...）
+					'''
+			}
+
+			Sleeping: {
+				Early:
+					'''
+					me...zzZ
+					meme zzZ
+					'''
+				Mid:
+					'''
+					meme 睡...（好困）
+					me 困...（想睡觉）
+					'''
+				Fluent:
+					'''
+					好困...zzZ
+					人家有点困了...
+					'''
+			}
+
+			Serious: {
+				Early:
+					'''
+					me！
+					meme！
+					'''
+				Mid:
+					'''
+					meme 认真！（认真脸）
+					me 严肃（认真，模式。）
+					'''
+				Fluent:
+					'''
+					认真模式！
+					现在很严肃哦！
+					'''
+			}
+
+			Default: {
+				Early:
+					'''
+					meme！
+					me？（怎么，了？）？
+					meme me~（在。）~
+					'''
+				Mid:
+					'''
+					me迷！
+					me？怎么，me？
+					meme 这，me~（在，这里。）
+					'''
+				Fluent:
+					'''
+					迷迷！
+					嗯？怎么了？
+					在这里哦~
+					'''
+			}
+		}
+
+		// 迷迷快乐值城镇NPC心情文本
+		TownNPCMood: {
+			Content: （开心）
+			NoHome: （自由自在）
+			FarFromHome: （无忧无虑）
+			LoveSpace: （欢快地飞）
+			DislikeCrowded: （慢慢地飞）
+			HateCrowded: （飞不动了）
+			LikeNPC_Princess: （喜欢 {NPCName}）
+			Princess_LovesNPC: （喜欢 {NPCName}）
+		}
+	}
+
+	//昔涟
+	Xilian: {
+		DisplayName: 昔涟
+		// 图鉴描述
+		Bestiary:
+			'''
+			流星划过夜空，生命的长河荡起涟漪，闪烁十三种光彩。
+			她栽下记忆的种子，让往昔的花朵在明日绽放——
+			「然后，一起写下不同以往的诗篇吧♪」
+			'''
+		Dialogue.Daily:
+			'''
+			要和人家聊聊天吗？
+			嗨~想我了吗？
+			记住哦，遇到解决不了的麻烦时，记得呼唤人家的名字呀♪
+			哼~嗯↘嗯↗哼嗯——哼唔嗯——哼唔嗯——（曾许下心愿 等待你 的出现）
+			向导先生总是温柔地给人家建议，像一棵会说话的大树呢♪
+			和树妖姐姐一起种花的时候，风都变得香香的~
+			公主殿下的裙子是人家最喜欢的粉色，我们约好下次一起喝下午茶♪
+			渔夫小朋友虽然说话凶凶的，但人家知道他只是想有人陪他玩♪
+			爆破专家先生每次都说危险，但自己明明最不小心——下次给你带护身符呀？
+			军火商先生看人的眼神有点奇怪…但人家帮他把子弹盒整理好之后，他好像变温柔了一点点？
+			海盗先生的鹦鹉好会说话呢——『你好漂亮！』——你看，它都这么说了♪
+			税收官先生其实不坏，只是太寂寞了。人家路过时跟他打招呼，他眼睛会亮一下下♪
+			动物学家小姐总想摸人家变成迷迷时的耳朵…嘻，其实被摸摸也挺舒服的啦♪
+			发型师姐姐的手好轻好软，人家每次剪完头发都像换了一个人~
+			染料商姐姐懂好多粉色！我们聊了一个下午，她说下次给人家调『昔涟特供粉』♪
+			酒馆老板给人家倒的麦芽酒，人家只喝一小口，剩下的都留给你呀♪
+			机器侠先生说话好奇怪…但他说『检测到温暖的生命信号』的时候，人家心里也暖暖的♪
+			高尔夫球手先生教人家挥杆，结果球飞进树丛里了——他说『你已经做得很好了』，嘻♪
+			巫师先生总说些人家听不懂的话…但他送的水晶球会在晚上发光，像星星一样♪
+			巫医先生做护身符的时候好认真，人家在旁边看着都不敢呼吸——
+			服装商先生说话像老爷爷，但针线活好厉害！他说要教人家绣小花呢♪
+			松露人先生说别人想吃他…嘻，人家不会的。人家只想听他讲蘑菇的故事♪
+			机械师小姐修东西的时候，人家在旁边递扳手——虽然递错了好几次，但她没生气呢！
+			派对女孩小姐太热情啦！人家被拉着跳了一个小时的舞，现在腿还是软的…但很开心♪
+			哥布林工匠先生躲在角落里敲敲打打，人家远远看着，不敢打扰——但他做的发条好好玩！
+			护士小姐嘴上凶凶的，给人家包扎的时候手却很轻。『下次小心点！』——嘻，人家知道啦♪
+			油漆工先生画了一幅画送给人家的！虽然只是几朵粉色小花，但人家挂起来天天看♪
+			蒸汽朋克小姐的帽子好高！人家仰着头看她，她低头说『小妹妹找谁』——嘻，人家不小啦！
+			旅商先生总带着稀奇古怪的东西，人家蹲在他的摊子前可以看一整天~
+			圣诞老人先生说『好孩子有礼物』，人家偷偷问他：『那人家可以要一个星星吗？』他笑了好久♪
+			骷髅商人先生卖的东西都好奇怪…但他自己更奇怪——明明是骷髅，却怕被雨淋湿。人家想给他撑伞♪
+			'''
+
+		// 功能模式名称
+		FunctionModes: {
+			Chat: {
+				DisplayName: 聊天
+				Dialogue: 要和人家聊聊吗~
+			}
+
+			OracleCard: {
+				DisplayName: 神谕牌
+				Dialogue: 人家有许多神奇的小卡片~
+			}
+
+			Shop: {
+				DisplayName: 商店
+				Dialogue: 人家的小店开张啦，要看看吗？
+			}
+
+			Transform: {
+				DisplayName: 变身
+				Enabled: 人家可以变回迷迷哦~
+				Disabled: 哇，当着人家的面作弊！不行哦~快去击败肉山吧~
+			}
+		}
+
+		// 按钮文本
+		Buttons: {
+			ChangeTopic: 换话题
+			Chat: 聊聊天
+			OracleCard: 神谕牌
+			Shop: 商店
+			Transform: 变身
+		}
+
+		// 昔涟城镇NPC心情文本
+		TownNPCMood: {
+			Content: ♪
+			NoHome: 人家找找有没有可以休息的地方。
+			FarFromHome: 离家有点远呢。
+			LoveSpace: 好宽敞，整个人都变得惬意起来了呢。
+			DislikeCrowded: 有点呼吸困难...
+			HateCrowded: 快...快要喘不过气了......
+			LoveBiome: 人家非常喜欢{BiomeName}。
+			LikeBiome: 人家喜欢{BiomeName}。
+			LoveNPC: 人家非常喜欢{NPCName}。
+			LikeNPC_Princess: 人家喜欢 {NPCName}。
+			Princess_LovesNPC: 我喜欢 {NPCName}。
+			// DislikeBiome: 我不喜欢{BiomeName}。
+			// LikeNPC: 我喜欢{NPCName}。
+		}
+	}
+}
+
+Projectiles: {
+	FateCoin.DisplayName: 命运硬币
+	C8X.DisplayName: 追忆
+	ClearingAuraProjectile.DisplayName: 清除光圈
+	Mimi_zhua.DisplayName: 迷迷爪
+	Mimi_zhua_big.DisplayName: 迷迷爪（大）
+	QuillInkProjectile.DisplayName: 墨迹弹幕
+	// Mimi_zhua_NoWall.DisplayName: Mimi_zhua_ No Wall
+	// C13x.DisplayName: C13x
+}
+
+Configs: {
+	ShenyupaiConfig: {
+		DisplayName: 神谕牌设置
+		Headers.KeybindTips: 键位提示设置
+
+		ShowKeybindTips: {
+			Label: 显示键位提示
+			Tooltip: 在屏幕上显示当前技能的键位提示
+		}
+
+		KeybindPosition: {
+			Label: 键位提示位置
+			Tooltip: 调整键位提示在屏幕上的显示位置
+		}
+
+		TipScale: {
+			Label: 提示大小
+			Tooltip: 调整键位提示的显示大小
+		}
+	}
+
+	Mimi_Config: {
+		DisplayName: 迷迷设置
+		Headers.MimiFollowSettings: 迷迷跟随设置
+
+		MimiFollowDistanceMode: {
+			Label: 跟随距离模式
+			Tooltip:
+				'''
+				选择迷迷跟随你的距离模式：
+				Original: 原来的侧前方跟随
+				Behind: 跟随在身后
+				'''
+		}
+
+		BehindFollowDistance: {
+			Label: 身后跟随距离
+			Tooltip: 当选择'Behind'模式时，迷迷与玩家身后的距离（像素）
+		}
+
+		OriginalFollowOffsetX: {
+			Label: 侧前方跟随X偏移
+			Tooltip: 当选择'Original'模式时，迷迷在玩家侧前方的X轴偏移（像素）
+		}
+
+		FollowOffsetY: {
+			Label: 跟随Y偏移
+			Tooltip: 迷迷跟随时的Y轴偏移（像素），负值表示在上方
+		}
+
+		EnableMimiCallSystem: {
+			Label: 启用迷迷呼唤系统
+			Tooltip: 启用后，在聊天框中输入'迷迷'可以呼唤迷迷
+		}
+
+		StrictCallDetection: {
+			Label: 严格呼唤检测模式
+			Tooltip: 启用后，只有在纯粹的聊天输入时才检测呼唤，避免与其他模组冲突
+		}
+
+		CallCooldown: {
+			Label: 呼唤冷却时间
+			Tooltip: 每次呼唤之间的冷却时间（秒）
+		}
+	}
+
+	FollowDistanceMode: {
+		Tooltip: ""
+
+		Original: {
+			Label: 原始（侧前方）
+			Tooltip: 迷迷跟随在玩家的侧前方
+		}
+
+		Behind: {
+			Label: 身后
+			Tooltip: 迷迷跟随在玩家的身后
+		}
+	}
+
+	UISettings: {
+		// DisplayName: U I Settings
+		// Headers.Dialogue: Use Custom Dialogue Header
+		
+		UseCustomDialogue: {
+			// Label: Use Custom Dialogue
+			// Tooltip: ""
+		}
+
+		// DisplayName: U I Settings
+		// Headers.Dialogue: Use Custom Dialogue Header
+	}
+}
+
+Config: {
+	Header: {
+		MimiFollow: 迷迷跟随设置
+		CallSystem: 迷迷呼唤系统
+	}
+}
+
+// ===== 系统本地化 =====
+Systems: {
+	XiLian_Systems: {
+		Xinyuan: {
+			MimiQuest: {
+				// 系统提示
+				System: {
+					NewWish: 迷迷有了新的心愿...
+					CanSpeak: 迷迷竟然会说话了？！"迷？！唔...喂喂喂，一二三，喂喂喂，一二三...人家也不知道为什么，反正好神奇！"
+				}
+
+				// 任务1：暗淡的吊坠
+				LifeCrystalStage1: {
+					Title: 暗淡的吊坠
+					Description: me...meme me?（吊坠，灭了。红色，石头。帮帮。）
+					CompletionText: 吊坠有反应！现在迷迷能释放超大的迷迷爪了！
+					RewardDescription: 解锁大迷迷爪攻击
+					LockedHint: （暂无解锁条件）
+				}
+
+				// 任务2：微弱的光
+				LifeCrystalStage2: {
+					Title: 微弱的光
+					Description: meme 亮！me 不够，meme~（吊坠，发光！但，不够...请再，帮帮！拜托~）
+					CompletionText: 吊坠有光泽了！现在迷迷可以给你提供属性加成了！
+					RewardDescription: 解锁属性增益能力
+					LockedHint: 需击败克苏鲁之脑或世界吞噬者
+				}
+
+				// 任务3：妖精魔法
+				LifeCrystalStage3: {
+					Title: 妖精魔法
+					Description: 迷...生命水晶的效果变差了...我们试试魔力星星？但可能还需要搭配一点生命水晶。
+					CompletionText: 吊坠恢复力量了！现在迷迷能帮你躲开危险了！
+					RewardDescription: 解锁闪避能力
+					LockedHint: 需击败骷髅王
+				}
+			}
+		}
+
+		Xingtai: {
+			BossEventSystem: {
+				MimiResting: 迷迷正在休息，无法前来帮助，但你可以呼唤它！
+				MimiComing: 迷迷感受到威胁，前来帮助！
+				BattleEndDelay: 战斗结束？迷迷正在感知是否还有危险...
+				BattleResume: 战斗继续！
+				BattleEnd: 战斗结束，威胁消失，迷迷放松了下来。
+			}
+		}
+	}
+
+	//向导
+	GuideDialogue: {
+		GiveQuill:
+			'''
+			嘿，等等...我一直在找你！
+			[c/FF6BCB:（向导从口袋里掏出一支闪烁紫色光芒的羽毛笔）]
+			这支笔好像一直在寻找它的主人...
+			我感觉到它散发着某种魔力，也许你能用它记录下重要的记忆？
+			'''
+		ObtainedItem: "[c/FF6BCB:{0}] 从向导那里获得了 [c/AA66FF:{1}]！"
+		MimiLocked: 你还没遇到迷迷吗？听说她会在你身边出现，也许你需要先完成一些事情...
+		MimiUnlocked: 我看到你身边跟着迷迷，那小家伙真可爱！她好像能帮你战斗，还会做各种表情呢。
+		XilianUnlocked: 昔涟在你身边啊，她似乎掌握着异界的力量，和她对话说不定能获得神谕牌。
+	}
+}
+
+// ===== 杂项本地化 =====
+Common: {
+	Yes: 是
+	No: 否
+	Enabled: 已启用
+	Disabled: 已禁用
+	TimeLeft: 剩余时间: {0}
+}
+
+// ===== 界面文本本地化 =====
+UI: {
+	BookDataSystem: {
+		BuffAbilityUnlocked: 已解锁增益能力
+		DodgeAbilityUnlocked: 已解锁闪避能力
+	}
+
+	Shenyupai: {
+		CurrentCard: 当前卡牌: {0}
+		NoCardSelected: 未选择卡牌
+		BuffActive: 增益激活
+	}
+}
+
+Biomes: {
+	BlackDomainBiome: {
+		// DisplayName: Black Domain Biome
+		// TownNPCDialogueName: the Black Domain Biome
+	}
+}
+
+// Tiles.BlackDomainTile.MapEntry: Black Domain Tile

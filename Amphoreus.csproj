@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\tModLoader.targets" />
+
+	<PropertyGroup>
+		<AssemblyName>Amphoreus</AssemblyName>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
+		<!-- 防止自动包含不需要的文件 -->
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+		<EnableDefaultNoneItems>false</EnableDefaultNoneItems>
+		<EnableDefaultContentItems>false</EnableDefaultContentItems>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- 自动包含所有C#文件，排除特定文件夹 -->
+		<Compile Include="**\*.cs" Exclude="obj\**;bin\**;.vs\**;ModSystems\**;*.old.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- 自动包含所有贴图文件 -->
+		<Content Include="**\*.png" Exclude="obj\**;bin\**;.vs\**">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- 包含本地化文件 -->
+		<Content Include="Localization\*.hjson">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- 确保hjson文件被正确处理 -->
+		<None Include="Localization\*.hjson">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- 添加对其他模组库的引用（如果需要） -->
+		<PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
+	</ItemGroup>
+
+	<!-- 清理不需要的旧文件引用 -->
+	<ItemGroup>
+		<Compile Remove="ModSystems\**" />
+		<Content Remove="ModSystems\**" />
+		<None Remove="ModSystems\**" />
+		<EmbeddedResource Remove="ModSystems\**" />
+	</ItemGroup>
+	<ItemGroup>
+	  <AdditionalFiles Remove="Items\World_Items\BlackDomainItem.png" />
+	  <AdditionalFiles Remove="NPCs\XiLian\Xilian_Touxiang.png" />
+	  <AdditionalFiles Remove="Projectiles\XiLian_Projectiles\Mimi\Mimi_zhua_NoWall.png" />
+	  <AdditionalFiles Remove="Tiles\World_Tiles\BlackDomainTile.png" />
+	  <AdditionalFiles Remove="Tiles\XiLian_Tiles\XilianHuakuang.png" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Remove="Localization\zh-Hans.hjson" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="NPCs\CeShi\" />
+	  <Folder Include="Players\World_Players\" />
+	  <Folder Include="Projectiles\Shenyupai_Projectiles\DaDi\" />
+	  <Folder Include="Projectiles\Shenyupai_Projectiles\Menjing\" />
+	  <Folder Include="Systems\SFeir_Systems\" />
+	  <Folder Include="UI\Shenyupai_UI\Dadi\" />
+	  <Folder Include="WorldGen\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include=".github\agents\my-agent.agent.md" />
+	</ItemGroup>
+</Project>
