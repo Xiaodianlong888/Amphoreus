@@ -9,7 +9,7 @@ using Terraria.ID;
 using Terraria.UI;
 using Terraria.ModLoader;
 
-namespace Amphoreus.UI.MimiDialogueUI
+namespace Amphoreus.UI.Dialogue
 {
     public class MimiDialogueUI : UIState
     {

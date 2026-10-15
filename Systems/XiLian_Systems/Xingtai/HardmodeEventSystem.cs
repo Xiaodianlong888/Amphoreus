@@ -1,4 +1,6 @@
-﻿//using Microsoft.Xna.Framework;
+﻿namespace Amphoreus.Systems.XiLian_Systems.Xingtai
+{
+//using Microsoft.Xna.Framework;
 //using Terraria;
 //using Terraria.ModLoader;
 //using Terraria.ID;
@@ -157,3 +159,4 @@
 //        }
 //    }
 //}
+}

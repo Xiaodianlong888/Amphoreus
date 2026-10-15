@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System.IO;
 using Terraria;
 using Terraria.ModLoader;
@@ -45,6 +45,13 @@ namespace Amphoreus.Systems.XiLian_Systems.Xingtai
         // === 每帧更新 ===
         public override void PostUpdateNPCs()
         {
+            // 只有迷迷在场时才做 BOSS 检测；
+            // 迷迷不在（含已变成昔涟的形态）时完全不检测。
+            if (!CheckIfMimiExists())
+            {
+                return;
+            }
+
             // === 新增：检查是否有迷迷处于闲置模式 ===
             bool anyMimiInIdleMode = CheckIfAnyMimiInIdleMode();
             if (anyMimiInIdleMode)
@@ -283,9 +290,8 @@ namespace Amphoreus.Systems.XiLian_Systems.Xingtai
                 }
 
                 SpawnTransformEffect(spawnPos);
-
-                // 显示信息
-                ShowMessage(GetLocalizedText("MimiComing"), Color.LightPink);
+                // 注意：此处不再播报 MimiComing。紧接着调用的 StartBattle() 已统一播报，
+                // 否则同一帧内会连播两次。
             }
         }
 

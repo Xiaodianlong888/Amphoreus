@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace Amphoreus.Systems.Ruwosuoshu_Systems
+namespace Amphoreus.Systems.Ruwosuoshu
 {
     // 心愿模板（世界数据）
     public class WishTemplate

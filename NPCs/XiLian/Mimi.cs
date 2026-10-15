@@ -1,5 +1,5 @@
-﻿using Amphoreus.Configs;
-using Amphoreus.Systems.Ruwosuoshu_Systems;
+using Amphoreus.Configs;
+using Amphoreus.Systems.Ruwosuoshu;
 using Amphoreus.Systems.XiLian_Systems.Touxiang;
 using Amphoreus.Systems.XiLian_Systems.Xinyuan;
 using Microsoft.Xna.Framework;
@@ -1537,8 +1537,8 @@ namespace Amphoreus.NPCs.XiLian
         {
             foreach (Player player in Main.player)
             {
-                if (player.active && !player.dead &&
-                    Vector2.Distance(NPC.Center, player.Center) < 800f)
+                // 增益覆盖所有玩家，不受距离限制
+                if (player.active && !player.dead)
                 {
                     player.AddBuff(ModContent.BuffType<Buffs.XiLian_Buffs.MimiBuff>(), 60 * 60 * 5);
                     for (int i = 0; i < 10; i++)

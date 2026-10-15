@@ -1,4 +1,4 @@
-﻿using Amphoreus.UI.MimiDialogueUI;
+﻿using Amphoreus.UI.Dialogue;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;

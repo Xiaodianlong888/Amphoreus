@@ -1,4 +1,4 @@
-﻿using Amphoreus.Systems.Ruwosuoshu_Systems;
+﻿using Amphoreus.Systems.Ruwosuoshu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -50,7 +50,7 @@ namespace Amphoreus.UI.Ruwosuoshu
             {
                 try
                 {
-                    BookIconTexture = ModContent.Request<Texture2D>("Amphoreus/UI/Ruwosuoshu_UI/BookUI/BookIcon", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+                    BookIconTexture = ModContent.Request<Texture2D>("Amphoreus/UI/Ruwosuoshu/BookUI/BookIcon", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
                 }
                 catch (Exception ex)
                 {
@@ -60,7 +60,7 @@ namespace Amphoreus.UI.Ruwosuoshu
 
                 try
                 {
-                    BookBackgroundTexture = ModContent.Request<Texture2D>("Amphoreus/UI/Ruwosuoshu_UI/BookUI/BookBackground", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
+                    BookBackgroundTexture = ModContent.Request<Texture2D>("Amphoreus/UI/Ruwosuoshu/BookUI/BookBackground", ReLogic.Content.AssetRequestMode.ImmediateLoad).Value;
                 }
                 catch (Exception ex)
                 {

@@ -1,4 +1,4 @@
-﻿using Amphoreus.UI.XilianDialogueUI;
+﻿using Amphoreus.UI.Dialogue;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
@@ -7,10 +7,10 @@ using Terraria.UI;
 
 namespace Amphoreus.Systems.XiLian_Systems.Touxiang
 {
-    public class XilianDialogueSystem : ModSystem
+    public class XiLianDialogueSystem : ModSystem
     {
         internal UserInterface _interface;
-        internal XilianDialogueUI _dialogueUI;
+        internal XiLianDialogueUI _dialogueUI;
 
         private bool _isActive = false;
         private int _currentNPCWhoAmI = -1;
@@ -23,7 +23,7 @@ namespace Amphoreus.Systems.XiLian_Systems.Touxiang
             if (!Main.dedServ)
             {
                 _interface = new UserInterface();
-                _dialogueUI = new XilianDialogueUI();
+                _dialogueUI = new XiLianDialogueUI();
                 _dialogueUI.Activate();
             }
         }

@@ -1,6 +1,8 @@
-﻿using Amphoreus.Players.Shenyupai_Players;
+using Amphoreus.Players.Shenyupai_Players;
 using Amphoreus.Systems.XiLian_Systems.Touxiang;
 using Amphoreus.Systems.XiLian_Systems.Xingtai;
+using Amphoreus.Systems.XiLian_Systems.Xinyuan;
+using Amphoreus.Systems.Ruwosuoshu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -25,7 +27,8 @@ namespace Amphoreus.NPCs.XiLian
             Chat,
             OracleCard,
             Shop,
-            Transform
+            Transform,
+            Quest
         }
 
         // === 对话头像贴图 ===
@@ -50,6 +53,18 @@ namespace Amphoreus.NPCs.XiLian
         private const int AttackCooldown = 180;
         private int attackCooldownTimer = 0;
 
+        // === 传送脱离系统 ===
+        /// <summary>敌人进入该距离即视为「过于接近」，触发传送脱离。</summary>
+        private const float TeleportTriggerDistance = 150f;
+        /// <summary>传送后与敌人保持的距离。</summary>
+        private const float TeleportSafeDistance = 420f;
+
+        /// <summary>寻找落点时向下搜索的最大格数。</summary>
+        private const int DownwardSearchTiles = 20;
+        /// <summary>传送冷却（3 秒）。</summary>
+        private const int TeleportCooldown = 180;
+        private int teleportCooldownTimer = 0;
+
         // === 对话模式相关 ===
         public FunctionMode CurrentFunctionMode => _currentFunctionMode;
         private FunctionMode _currentFunctionMode = FunctionMode.Chat;
@@ -58,7 +73,8 @@ namespace Amphoreus.NPCs.XiLian
             FunctionMode.Chat,
             FunctionMode.OracleCard,
             FunctionMode.Shop,
-            FunctionMode.Transform
+            FunctionMode.Transform,
+            FunctionMode.Quest
         };
         private int _functionModeIndex = 0;
         private string _currentChatText = ""; // 存储当前显示的聊天文本
@@ -103,8 +119,6 @@ namespace Amphoreus.NPCs.XiLian
             NPC.DeathSound = SoundID.NPCDeath1;
             AnimationType = NPCID.Dryad;
             NPC.knockBackResist = 0f;
-            NPC.immortal = true;
-            NPC.dontTakeDamage = true;
         }
 
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
@@ -132,12 +146,20 @@ namespace Amphoreus.NPCs.XiLian
             if (attackCooldownTimer > 0)
                 attackCooldownTimer--;
 
+            if (teleportCooldownTimer > 0)
+                teleportCooldownTimer--;
+
+            // 攻击中：不处理走位与脱离
             if (isAttacking)
             {
                 HandleAttackState();
                 return;
             }
 
+            // 昔涟不恐惧敌人：敌人靠近时她不移动、不保持距离、也不传送脱离。
+            // 因此这里不再调用 TryAvoidByTeleport()。
+
+            // 敌人进入攻击范围就立刻攻击
             if (attackCooldownTimer <= 0)
             {
                 FindAttackTarget();
@@ -149,6 +171,138 @@ namespace Amphoreus.NPCs.XiLian
             }
 
             base.AI();
+        }
+
+        /// <summary>
+        /// 已停用：原「敌人靠近则传送脱离」的行为。
+        /// 昔涟不再恐惧敌人，敌人靠近时保持原地不动。
+        /// </summary>
+        private bool TryAvoidByTeleport()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// 在威胁点周围一圈寻找可站立的物块。
+        /// 用 <see cref="Collision.SolidCollision"/> 按 NPC 真实碰撞箱（40x54）判定，
+        /// 并把落点吸附到地面上，避免传送后卡进方块里。
+        /// </summary>
+        private bool TryFindTeleportSpot(Vector2 threatCenter, out Vector2 result)
+        {
+            result = NPC.Center;
+
+            for (int attempt = 0; attempt < 40; attempt++)
+            {
+                float angle = Main.rand.NextFloat(MathHelper.TwoPi);
+                Vector2 offset = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * TeleportSafeDistance;
+                Vector2 candidate = threatCenter + offset;
+
+                if (!TryResolveStandingPosition(candidate, out Vector2 standing))
+                {
+                    continue;
+                }
+
+                result = standing;
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// 把候选位置（NPC 中心）吸附到一个「脚下实体、身体无阻挡」的站位。
+        /// 从候选点向下最多找 DownwardSearchTiles 格，成功返回该处中心坐标。
+        /// </summary>
+        private bool TryResolveStandingPosition(Vector2 candidateCenter, out Vector2 standingCenter)
+        {
+            standingCenter = candidateCenter;
+
+            int halfWidth = NPC.width / 2;
+            int halfHeight = NPC.height / 2;
+
+            int startTileY = (int)(candidateCenter.Y / 16f);
+
+            for (int dy = 0; dy <= DownwardSearchTiles; dy++)
+            {
+                int tileY = startTileY + dy;
+
+                if (tileY < 10 || tileY > Main.maxTilesY - 10)
+                {
+                    return false;
+                }
+
+                if ((int)(candidateCenter.X / 16f) < 10 ||
+                    (int)(candidateCenter.X / 16f) > Main.maxTilesX - 10)
+                {
+                    return false;
+                }
+
+                // 站立行的顶边 Y：脚正好贴在该行上沿
+                float top = tileY * 16f - NPC.height;
+                Vector2 pos = new Vector2(candidateCenter.X - halfWidth, top);
+
+                // 脚下必须是实体方块
+                int footTileY = (int)((top + NPC.height + 2f) / 16f);
+                int leftTileX = (int)((pos.X + 2f) / 16f);
+                int rightTileX = (int)((pos.X + NPC.width - 2f) / 16f);
+
+                Tile leftFoot = Framing.GetTileSafely(leftTileX, footTileY);
+                Tile rightFoot = Framing.GetTileSafely(rightTileX, footTileY);
+
+                bool leftSolid = leftFoot != null && leftFoot.HasUnactuatedTile && Main.tileSolid[leftFoot.TileType];
+                bool rightSolid = rightFoot != null && rightFoot.HasUnactuatedTile && Main.tileSolid[rightFoot.TileType];
+
+                if (!leftSolid || !rightSolid)
+                {
+                    continue;
+                }
+
+                // 整个碰撞箱不能压到实体方块
+                if (Collision.SolidCollision(pos, NPC.width, NPC.height))
+                {
+                    continue;
+                }
+
+                // 不能落在液体里（微光/岩浆会伤到）
+                if (Collision.LavaCollision(pos, NPC.width, NPC.height))
+                {
+                    continue;
+                }
+
+                standingCenter = new Vector2(candidateCenter.X, top + halfHeight);
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>传送：位移 + 尘埃 + 音效，并在服务端同步位置。</summary>
+        private void TeleportTo(Vector2 destination, Vector2 threatCenter)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, DustID.PinkFairy, 0f, 0f, 100, default, 1.2f)
+                    .noGravity = true;
+            }
+
+            NPC.Center = destination;
+            NPC.velocity = Vector2.Zero;
+            NPC.netUpdate = true;
+
+            if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, NPC.whoAmI);
+            }
+            else
+            {
+                SoundEngine.PlaySound(SoundID.Item8, destination);
+            }
+
+            for (int i = 0; i < 20; i++)
+            {
+                Dust.NewDustDirect(NPC.position, NPC.width, NPC.height, DustID.PinkFairy, 0f, 0f, 100, default, 1.2f)
+                    .noGravity = true;
+            }
         }
 
         // === 攻击系统方法 ===
@@ -193,20 +347,34 @@ namespace Amphoreus.NPCs.XiLian
             NPC.direction = target.Center.X > NPC.Center.X ? 1 : -1;
             NPC.spriteDirection = NPC.direction;
 
+            // ========== 添加光效与粒子（开始） ==========
+            // 光芒随攻击进度增强
+            float progress = (float)attackTimer / TotalAttackTime;
+            float lightStrength = 0.5f + 1.0f * progress;
+            Lighting.AddLight(NPC.Center, 1.0f * lightStrength, 0.5f * lightStrength, 0.8f * lightStrength);
+
+            // 粒子：在半径 50 的圆内随机位置零星生成，整体密度大幅降低
+            int dustCount = (int)Math.Ceiling(2f + 4f * progress);
+            for (int i = 0; i < dustCount; i++)
+            {
+                float angle = Main.rand.NextFloat(MathHelper.TwoPi);
+                float radius = 50f * (float)Math.Sqrt(Main.rand.NextFloat());
+                Vector2 dustPos = NPC.Center + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * radius;
+
+                Dust dust = Dust.NewDustPerfect(
+                    dustPos, DustID.PinkFairy, Vector2.Zero,
+                    100, default, 0.8f + progress * 0.6f);
+                dust.noGravity = true;
+                dust.velocity *= 0.3f;
+            }
+            // ========== 添加结束 ==========
+
             if (attackTimer == ProjectileSpawnTime)
                 SpawnC8XProjectile(target);
 
             if (attackTimer >= TotalAttackTime)
             {
-                if (IsTargetValid())
-                {
-                    CancelAttack();
-                    attackCooldownTimer = AttackCooldown;
-                }
-                else
-                {
-                    CancelAttack();
-                }
+                CancelAttack();
             }
         }
 
@@ -219,11 +387,16 @@ namespace Amphoreus.NPCs.XiLian
             return distance <= MaxAttackDistance;
         }
 
-        private void CancelAttack()
+        private void CancelAttack(bool startCooldown = true)
         {
             isAttacking = false;
             attackTimer = 0;
             attackTarget = -1;
+
+            // 结束攻击一律进入冷却，避免敌人进出范围时反复起手抽搐
+            if (startCooldown)
+                attackCooldownTimer = AttackCooldown;
+
             NPC.netUpdate = true;
         }
 
@@ -287,8 +460,10 @@ namespace Amphoreus.NPCs.XiLian
             if (Main.bloodMoon) return "BloodMoon";
             if (Main.eclipse) return "Eclipse";
             if (Main.slimeRain) return "SlimeRain";
+            if (Terraria.GameContent.Events.LanternNight.LanternsUp) return "LanternNight";   // 灯笼夜
             if (player.ZoneGraveyard) return "Graveyard";
             if (Main.raining) return "Rain";
+            if (Terraria.GameContent.Events.BirthdayParty.PartyIsUp) return "Party";          // 派对
             if (Main.windSpeedCurrent > 0.4f) return "Windy";
             if (Main.dayTime)
             {
@@ -351,6 +526,8 @@ namespace Amphoreus.NPCs.XiLian
                     return GetLocalizedText("NPCs.Xilian.Buttons.Shop");
                 case FunctionMode.Transform:
                     return GetLocalizedText("NPCs.Xilian.Buttons.Transform");
+                case FunctionMode.Quest:
+                    return GetLocalizedText("NPCs.Xilian.Buttons.Quest");
                 default:
                     return "";
             }
@@ -371,9 +548,48 @@ namespace Amphoreus.NPCs.XiLian
                     return Main.hardMode
                         ? GetLocalizedText("NPCs.Xilian.FunctionModes.Transform.Enabled")
                         : GetLocalizedText("NPCs.Xilian.FunctionModes.Transform.Disabled");
+                case FunctionMode.Quest:
+                    return GetQuestDialogueText();
                 default:
-                    return "meme~";
+                    // 兜底：不应出现。若出现说明功能模式状态异常，给出可读文本而不是内部占位符
+                    return GetLocalizedText("NPCs.Xilian.FunctionModes.Unknown");
             }
+        }
+
+        // === 任务模式：根据当前任务状态给出对应文本 ===
+        private string GetQuestDialogueText()
+        {
+            var available = XiLianQuestSystem.GetFirstAvailableQuest();
+
+            if (available == null)
+            {
+                if (XiLianQuestSystem.CurrentQuest != null && XiLianQuestSystem.CurrentQuest.IsActive)
+                {
+                    return XiLianQuestSystem.CanCompleteCurrentQuest(Main.LocalPlayer)
+                        ? XiLianQuestSystem.CurrentQuest.CompletionText
+                        : GetQuestRequirementHint(XiLianQuestSystem.CurrentQuest);
+                }
+
+                return GetLocalizedText("NPCs.Xilian.FunctionModes.Quest.NoQuest");
+            }
+
+            return available.Description;
+        }
+
+        // === 任务模式：列出还缺哪些材料 ===
+        private string GetQuestRequirementHint(XiLianQuestData quest)
+        {
+            var player = Main.LocalPlayer;
+            var lines = new List<string> { quest.Description };
+
+            foreach (var req in quest.RequiredItems)
+            {
+                int have = XiLianQuestSystem.CountItemsInInventory(player, req.Key);
+                string itemName = Lang.GetItemNameValue(req.Key);
+                lines.Add($"{itemName}: {have}/{req.Value}");
+            }
+
+            return string.Join("\n", lines);
         }
 
         // === 切换功能模式 ===
@@ -397,7 +613,29 @@ namespace Amphoreus.NPCs.XiLian
             {
                 newText = GetCurrentModeDialogueText();
             }
-            Main.npcChatText = newText;
+            SetChatText(newText);
+        }
+
+        /// <summary>
+        /// 统一的对话文本刷新入口。
+        /// 走自定义对话框时把文本交给 XiLianDialogueSystem 显示，
+        /// 否则写原版的 Main.npcChatText。
+        /// </summary>
+        private void SetChatText(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return;
+            }
+
+            if (Config.UseCustomDialogue)
+            {
+                ModContent.GetInstance<XiLianDialogueSystem>().ShowDialogue(text, NPC);
+            }
+            else
+            {
+                Main.npcChatText = text;
+            }
         }
 
         // === 处理第二个按钮点击 ===
@@ -438,7 +676,7 @@ namespace Amphoreus.NPCs.XiLian
                     if (Main.hardMode)
                     {
                         Main.npcChatText = "";
-                        ModContent.GetInstance<XilianDialogueSystem>().HideUI();
+                        ModContent.GetInstance<XiLianDialogueSystem>().HideUI();
                         TransformXilianToMimi();
                     }
                     else
@@ -446,6 +684,43 @@ namespace Amphoreus.NPCs.XiLian
                         _currentChatText = GetLocalizedText("NPCs.Xilian.FunctionModes.Transform.Disabled");
                     }
                     break;
+
+                case FunctionMode.Quest:
+                    HandleQuestButton(player);
+                    break;
+            }
+        }
+
+        // === 任务模式按钮：接取 / 提示 / 提交 ===
+        private void HandleQuestButton(Player player)
+        {
+            var current = XiLianQuestSystem.CurrentQuest;
+
+            // 已有进行中的任务
+            if (current != null && current.IsActive)
+            {
+                if (XiLianQuestSystem.CanCompleteCurrentQuest(player))
+                {
+                    XiLianQuestSystem.CompleteCurrentQuest(player);
+                    _currentChatText = GetLocalizedText("NPCs.Xilian.FunctionModes.Quest.Complete");
+                }
+                else
+                {
+                    _currentChatText = GetQuestRequirementHint(current);
+                }
+                return;
+            }
+
+            // 没有进行中的任务：尝试接取
+            var available = XiLianQuestSystem.GetFirstAvailableQuest();
+            if (available != null)
+            {
+                XiLianQuestSystem.AcceptQuest(available.QuestType);
+                _currentChatText = GetLocalizedText("NPCs.Xilian.FunctionModes.Quest.Accepted");
+            }
+            else
+            {
+                _currentChatText = GetLocalizedText("NPCs.Xilian.FunctionModes.Quest.NoQuest");
             }
         }
 
@@ -463,6 +738,24 @@ namespace Amphoreus.NPCs.XiLian
             shop.Add(495);  // 彩虹魔杖
             shop.Add(2310); // 七彩矿鱼
             shop.Add(3209); // 水晶蛇
+
+            // === 花茶：完成对应任务章节后才上架 ===
+            shop.Add(ModContent.ItemType<Items.XiLian_Items.HerbTea.SunflowerHerbTea>(),
+                new Condition("Mods.Amphoreus.NPCs.Xilian.ShopConditions.Chapter1",
+                    () => XiLianQuestSystem.Chapter1Completed));
+            shop.Add(ModContent.ItemType<Items.XiLian_Items.HerbTea.MoonflowerHerbTea>(),
+                new Condition("Mods.Amphoreus.NPCs.Xilian.ShopConditions.Chapter1",
+                    () => XiLianQuestSystem.Chapter1Completed));
+            shop.Add(ModContent.ItemType<Items.XiLian_Items.HerbTea.ShiningRootHerbTea>(),
+                new Condition("Mods.Amphoreus.NPCs.Xilian.ShopConditions.Chapter2",
+                    () => XiLianQuestSystem.Chapter2Completed));
+            shop.Add(ModContent.ItemType<Items.XiLian_Items.HerbTea.FireblossomHerbTea>(),
+                new Condition("Mods.Amphoreus.NPCs.Xilian.ShopConditions.Chapter3",
+                    () => XiLianQuestSystem.Chapter3Completed));
+            shop.Add(ModContent.ItemType<Items.XiLian_Items.HerbTea.ChillthornHerbTea>(),
+                new Condition("Mods.Amphoreus.NPCs.Xilian.ShopConditions.Chapter3",
+                    () => XiLianQuestSystem.Chapter3Completed));
+
             shop.Register();
         }
 
@@ -485,18 +778,27 @@ namespace Amphoreus.NPCs.XiLian
                 if (_currentFunctionMode == FunctionMode.Shop)
                 {
                     Main.npcChatText = "";
-                    ModContent.GetInstance<XilianDialogueSystem>().HideUI();
+                    ModContent.GetInstance<XiLianDialogueSystem>().HideUI();
                     shopName = "Shop";
                     return;
                 }
 
-                // 处理第二个按钮（聊聊天/神谕牌/变身）
+                // 处理第二个按钮（聊聊天/神谕牌/变身/任务）
                 HandleSecondButton();
 
-                // 非商店模式，更新对话文本
+                // HandleSecondButton 已把结果写进 _currentChatText 的模式，优先显示它，
+                // 否则会被通用文案覆盖（聊聊天拿到的 NPC 评价就会丢）。
                 if (_currentFunctionMode != FunctionMode.Shop)
                 {
-                    Main.npcChatText = GetCurrentModeDialogueText();
+                    bool handledByButton =
+                        _currentFunctionMode == FunctionMode.Chat ||
+                        _currentFunctionMode == FunctionMode.OracleCard ||
+                        _currentFunctionMode == FunctionMode.Quest ||
+                        (_currentFunctionMode == FunctionMode.Transform && !Main.hardMode);
+
+                    bool hasResult = handledByButton && !string.IsNullOrEmpty(_currentChatText);
+
+                    SetChatText(hasResult ? _currentChatText : GetCurrentModeDialogueText());
                 }
             }
         }
@@ -506,7 +808,7 @@ namespace Amphoreus.NPCs.XiLian
 
         public override bool CanChat()
         {
-            if (Config.UseCustomDialogue && ModContent.GetInstance<XilianDialogueSystem>().IsActive)
+            if (Config.UseCustomDialogue && ModContent.GetInstance<XiLianDialogueSystem>().IsActive)
                 return false;
             return base.CanChat();
         }
@@ -516,6 +818,10 @@ namespace Amphoreus.NPCs.XiLian
         {
             string chatText = "";
 
+            // 与昔涟对话即视为已结识，用于解锁花茶任务第一章
+            BookDataSystem.OnXiLianDialogue();
+            XiLianQuestSystem.CheckQuestUnlockStatus();
+
             if (_currentFunctionMode == FunctionMode.Chat)
             {
                 // 日常触发：75%环境对话，25%日常问候（不含NPC评价）
@@ -524,8 +830,10 @@ namespace Amphoreus.NPCs.XiLian
                     string conditionKey = GetConditionalChatKey();
                     if (!string.IsNullOrEmpty(conditionKey))
                     {
-                        string conditionText = GetLocalizedText($"NPCs.Xilian.EnvironmentChat.{conditionKey}");
-                        if (conditionText != $"[NPCs.Xilian.ConditionalChat.{conditionKey}]")
+                        // GetLocalizedText 在键缺失时返回 "[键名]"，据此判断是否需要回退
+                        string envKey = $"NPCs.Xilian.EnvironmentChat.{conditionKey}";
+                        string conditionText = GetLocalizedText(envKey);
+                        if (conditionText != $"[{envKey}]")
                         {
                             string[] lines = conditionText.Split('\n');
                             if (lines.Length > 0)
@@ -547,7 +855,7 @@ namespace Amphoreus.NPCs.XiLian
 
             if (Config.UseCustomDialogue)
             {
-                ModContent.GetInstance<XilianDialogueSystem>().ShowDialogue(chatText, NPC);
+                ModContent.GetInstance<XiLianDialogueSystem>().ShowDialogue(chatText, NPC);
                 return "";
             }
             return chatText;
@@ -602,7 +910,7 @@ namespace Amphoreus.NPCs.XiLian
                 string chatText = mimiNPC.GetChat();
                 if (!string.IsNullOrEmpty(chatText))
                 {
-                    Main.npcChatText = chatText;
+                    SetChatText(chatText);
                 }
             }
         }

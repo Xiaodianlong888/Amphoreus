@@ -3,7 +3,7 @@ using System.IO;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace Amphoreus.Players.XilLian_Players.Mimi
+namespace Amphoreus.Players.XiLian_Players.Mimi
 {
     public class PlayerActivityTracker : ModPlayer
     {

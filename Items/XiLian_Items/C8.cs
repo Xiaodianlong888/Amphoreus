@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+ï»¿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 namespace Amphoreus.Items.XiLian_Items
 {
     /// <summary>
-    /// C8 ÎäÆ÷ÎïÆ·Àà - Ö±½ÓÊ¹ÓÃÔ­°æ²ÊºçÄ§ÕÈµ¯Ä»
+    /// C8 æ­¦å™¨ç‰©å“ç±» - ç›´æ¥ä½¿ç”¨åŸç‰ˆå½©è™¹é­”æ–å¼¹å¹•
     /// </summary>
     public class C8 : ModItem
     {
@@ -15,10 +15,10 @@ namespace Amphoreus.Items.XiLian_Items
 
         public override void SetDefaults()
         {
-            Item.SetWeaponValues(33550336, 1, 8); // ÉËº¦£¬±©»÷ÂÊ1%£¨½öÏÔÊ¾£©£¬»÷ÍË
+            Item.SetWeaponValues(33550336, 1, 8); // ä¼¤å®³ï¼Œæš´å‡»ç‡1%ï¼ˆä»…æ˜¾ç¤ºï¼‰ï¼Œå‡»é€€
             Item.DamageType = DamageClass.Magic;
             Item.mana = 1;
-            Item.value = -1;          // ÎŞ¼Û
+            Item.value = -1;          // æ— ä»·
             Item.width = 50;
             Item.height = 50;
             Item.useStyle = ItemUseStyleID.Shoot;
@@ -28,7 +28,7 @@ namespace Amphoreus.Items.XiLian_Items
             Item.UseSound = SoundID.Item9;
             Item.autoReuse = true;
             Item.rare = ItemRarityID.Pink;
-            Item.shoot = ProjectileID.RainbowRodBullet; // Ô­°æ²ÊºçÄ§ÕÈµ¯Ä»
+            Item.shoot = ProjectileID.RainbowRodBullet; // åŸç‰ˆå½©è™¹é­”æ–å¼¹å¹•
             Item.shootSpeed = 13f;
             Item.noUseGraphic = false;
         }
@@ -42,12 +42,12 @@ namespace Amphoreus.Items.XiLian_Items
             Vector2 shootPos = player.Center;
             int proj = Projectile.NewProjectile(source, shootPos, velocity, ProjectileID.RainbowRodBullet, 33550336, knockback, player.whoAmI);
             Projectile p = Main.projectile[proj];
-            p.penetrate = -1;                // ÎŞÏŞ´©Í¸
-            p.timeLeft = 1111 * 60;          // 1111Ãë
-            p.tileCollide = false;            // ¿É´©Í¸Îï¿é
-            p.extraUpdates = 1;               // ¸üÆ½»¬
+            p.penetrate = -1;                // æ— é™ç©¿é€
+            p.timeLeft = 1111 * 60;          // 1111ç§’
+            p.tileCollide = false;            // å¯ç©¿é€ç‰©å—
+            p.extraUpdates = 1;               // æ›´å¹³æ»‘
 
-            // ±ê¼ÇÎªC8·¢ÉäµÄµ¯Ä»
+            // æ ‡è®°ä¸ºC8å‘å°„çš„å¼¹å¹•
             p.GetGlobalProjectile<C8GlobalProjectile>().IsC8Projectile = true;
             return false;
         }
@@ -64,7 +64,7 @@ namespace Amphoreus.Items.XiLian_Items
     }
 
     /// <summary>
-    /// È«¾Öµ¯Ä»Àà£º´¦ÀíÉËº¦¹Ì¶¨¡¢»¤¼×´©Í¸¡¢»·¾³¾»»¯¡¢×·×ÙµĞ¶Ôµ¯Ä»
+    /// å…¨å±€å¼¹å¹•ç±»ï¼šå¤„ç†ä¼¤å®³å›ºå®šã€æŠ¤ç”²ç©¿é€ã€ç¯å¢ƒå‡€åŒ–ã€è¿½è¸ªæ•Œå¯¹å¼¹å¹•
     /// </summary>
     public class C8GlobalProjectile : GlobalProjectile
     {
@@ -72,14 +72,14 @@ namespace Amphoreus.Items.XiLian_Items
         public bool IsC8Projectile = false;
         private int purifyCooldown = 0;
 
-        // ÔÊĞíÇĞ¸î/×ª»¯Îï¿é
+        // å…è®¸åˆ‡å‰²/è½¬åŒ–ç‰©å—
         public override bool? CanCutTiles(Projectile projectile) => IsC8Projectile ? true : null;
 
-        // ¾»»¯Îï¿éÓëÇ½±Ú£¨»·¾³¸ÄÔìÇ¹Ê½ÇøÓò¾»»¯£©
+        // å‡€åŒ–ç‰©å—ä¸å¢™å£ï¼ˆç¯å¢ƒæ”¹é€ æªå¼åŒºåŸŸå‡€åŒ–ï¼‰
         public override void CutTiles(Projectile projectile)
         {
             if (!IsC8Projectile) return;
-            if (++purifyCooldown < 3) return; // Ã¿3Ö¡Ò»´Î
+            if (++purifyCooldown < 3) return; // æ¯3å¸§ä¸€æ¬¡
             purifyCooldown = 0;
 
             int tileRange = 6;
@@ -104,12 +104,12 @@ namespace Amphoreus.Items.XiLian_Items
 
                     if (tile.WallType > 0)
                     {
-                        // ¾«×¼×ª»¯Ğ°¶ñÇ½±Ú£¨½ö×ª»¯ÌØ¶¨ÀàĞÍ£¬ÆäËûÇ½±Ú²»±ä£©
+                        // ç²¾å‡†è½¬åŒ–é‚ªæ¶å¢™å£ï¼ˆä»…è½¬åŒ–ç‰¹å®šç±»å‹ï¼Œå…¶ä»–å¢™å£ä¸å˜ï¼‰
                         switch (tile.WallType)
                         {
                             case WallID.EbonstoneUnsafe:
                             case WallID.CrimstoneUnsafe:
-                            case WallID.PearlstoneBrickUnsafe: // ĞŞÕıÎª PearlstoneBrickUnsafe
+                            case WallID.PearlstoneBrickUnsafe: // ä¿®æ­£ä¸º PearlstoneBrickUnsafe
                                 tile.WallType = WallID.Stone;
                                 WorldGen.SquareWallFrame(i, j);
                                 NetMessage.SendTileSquare(-1, i, j, 1);
@@ -134,7 +134,7 @@ namespace Amphoreus.Items.XiLian_Items
             }
         }
 
-        // ¹Ì¶¨ÉËº¦Óë»¤¼×´©Í¸
+        // å›ºå®šä¼¤å®³ä¸æŠ¤ç”²ç©¿é€
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref NPC.HitModifiers modifiers)
         {
             if (IsC8Projectile)
@@ -142,11 +142,11 @@ namespace Amphoreus.Items.XiLian_Items
                 modifiers.SourceDamage.Base = 33550336f;
                 modifiers.FinalDamage.Base = 33550336f;
                 modifiers.ArmorPenetration += 33550336f;
-                // ²»Ç¿ÖÆ±©»÷£¬±£ÁôÎäÆ÷ÏÔÊ¾µÄ1%±©»÷ÂÊ£¨µ«Êµ¼Ê±©»÷Ê±ÉËº¦Ò²ÊÇ¹Ì¶¨Öµ£¬²»Ó°Ïì£©
+                // ä¸å¼ºåˆ¶æš´å‡»ï¼Œä¿ç•™æ­¦å™¨æ˜¾ç¤ºçš„1%æš´å‡»ç‡ï¼ˆä½†å®é™…æš´å‡»æ—¶ä¼¤å®³ä¹Ÿæ˜¯å›ºå®šå€¼ï¼Œä¸å½±å“ï¼‰
             }
         }
 
-        // ±£³Ö×Ô¶¨ÒåÊôĞÔ£¨·ÀÖ¹Ô­°æAIÖØÖÃ£©
+        // ä¿æŒè‡ªå®šä¹‰å±æ€§ï¼ˆé˜²æ­¢åŸç‰ˆAIé‡ç½®ï¼‰
         public override bool PreAI(Projectile projectile)
         {
             if (IsC8Projectile)
@@ -157,15 +157,15 @@ namespace Amphoreus.Items.XiLian_Items
             return true;
         }
 
-        // ÔÚ PostAI ÖĞÊµÏÖ×·×Ù²¢Ïû³ıµĞ¶Ôµ¯Ä»
+        // åœ¨ PostAI ä¸­å®ç°è¿½è¸ªå¹¶æ¶ˆé™¤æ•Œå¯¹å¼¹å¹•
         public override void PostAI(Projectile projectile)
         {
             if (!IsC8Projectile) return;
 
-            // ×·×ÙµĞ¶Ôµ¯Ä»
+            // è¿½è¸ªæ•Œå¯¹å¼¹å¹•
             TrackHostileProjectiles(projectile);
 
-            // Ïû³ı¼ì²â£¨Ã¿2Ö¡Ò»´Î£©
+            // æ¶ˆé™¤æ£€æµ‹ï¼ˆæ¯2å¸§ä¸€æ¬¡ï¼‰
             if (projectile.localAI[1]++ > 1)
             {
                 projectile.localAI[1] = 0;
@@ -176,7 +176,7 @@ namespace Amphoreus.Items.XiLian_Items
         private void TrackHostileProjectiles(Projectile projectile)
         {
             float maxDetectRange = 600f;
-            float turnSpeed = 0.1f;          // ×ªÏòÆ½»¬¶È
+            float turnSpeed = 0.1f;          // è½¬å‘å¹³æ»‘åº¦
             Projectile target = null;
             float minDistSq = maxDetectRange * maxDetectRange;
 
@@ -185,7 +185,7 @@ namespace Amphoreus.Items.XiLian_Items
                 Projectile other = Main.projectile[i];
                 if (!other.active) continue;
                 if (other.whoAmI == projectile.whoAmI) continue;
-                if (!other.hostile) continue; // Ö»×·×ÙµĞ¶Ôµ¯Ä»
+                if (!other.hostile) continue; // åªè¿½è¸ªæ•Œå¯¹å¼¹å¹•
 
                 float distSq = Vector2.DistanceSquared(projectile.Center, other.Center);
                 if (distSq < minDistSq)
@@ -203,7 +203,7 @@ namespace Amphoreus.Items.XiLian_Items
                 Vector2 desiredVelocity = dir * currentSpeed;
                 projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, turnSpeed);
 
-                // ÏŞÖÆ×î´óËÙ¶È£¨¿ÉÑ¡£©
+                // é™åˆ¶æœ€å¤§é€Ÿåº¦ï¼ˆå¯é€‰ï¼‰
                 float maxSpeed = 20f;
                 if (projectile.velocity.Length() > maxSpeed)
                     projectile.velocity = Vector2.Normalize(projectile.velocity) * maxSpeed;
@@ -217,9 +217,9 @@ namespace Amphoreus.Items.XiLian_Items
                 Projectile other = Main.projectile[i];
                 if (!other.active) continue;
                 if (other.whoAmI == projectile.whoAmI) continue;
-                if (!other.hostile) continue; // Ö»Ïû³ıµĞ¶Ôµ¯Ä»
+                if (!other.hostile) continue; // åªæ¶ˆé™¤æ•Œå¯¹å¼¹å¹•
 
-                // Åö×²ãĞÖµ
+                // ç¢°æ’é˜ˆå€¼
                 float collisionThreshold = (projectile.width + other.width) * 0.4f;
                 if (Vector2.Distance(projectile.Center, other.Center) > collisionThreshold)
                     continue;
@@ -230,7 +230,7 @@ namespace Amphoreus.Items.XiLian_Items
                     NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, other.whoAmI);
                 }
 
-                // ¿ÉÑ¡£º²¥·ÅÏû³ıÒôĞ§»òÁ£×Ó
+                // å¯é€‰ï¼šæ’­æ”¾æ¶ˆé™¤éŸ³æ•ˆæˆ–ç²’å­
                 // Terraria.Audio.SoundEngine.PlaySound(SoundID.NPCHit4, other.Center);
             }
         }

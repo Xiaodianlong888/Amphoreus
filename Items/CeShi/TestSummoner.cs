@@ -1,4 +1,6 @@
-﻿//using Amphoreus.NPCs.CeShi;
+﻿namespace Amphoreus.Items.CeShi
+{
+//using Amphoreus.NPCs.CeShi;
 //using Microsoft.Xna.Framework;
 //using Terraria;
 //using Terraria.Audio;
@@ -153,3 +155,4 @@
 //        }
 //    }
 //}
+}

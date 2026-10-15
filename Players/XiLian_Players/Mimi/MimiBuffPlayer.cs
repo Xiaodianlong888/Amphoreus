@@ -1,4 +1,4 @@
-﻿using Amphoreus.Systems.Ruwosuoshu_Systems;
+﻿using Amphoreus.Systems.Ruwosuoshu;
 using Microsoft.Xna.Framework;
 using System;
 using System.IO;
@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace Amphoreus.Players.XilLian_Players.Mimi
+namespace Amphoreus.Players.XiLian_Players.Mimi
 {
     public class MimiBuffPlayer : ModPlayer
     {

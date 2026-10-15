@@ -1,4 +1,4 @@
-﻿using Amphoreus.Systems.Ruwosuoshu_Systems;
+﻿using Amphoreus.Systems.Ruwosuoshu;
 using Amphoreus.Systems.XiLian_Systems.Xinyuan;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

@@ -1,5 +1,5 @@
 ﻿using Amphoreus.Players.Shenyupai_Players;
-using Amphoreus.Systems.Ruwosuoshu_Systems;
+using Amphoreus.Systems.Ruwosuoshu;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -21,7 +21,7 @@ namespace Amphoreus.Buffs.XiLian_Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            var modPlayer = player.GetModPlayer<Players.XilLian_Players.Mimi.MimiBuffPlayer>();
+            var modPlayer = player.GetModPlayer<Players.XiLian_Players.Mimi.MimiBuffPlayer>();
             modPlayer.hasMimiBuff = true;
 
             // 固定4%暴击率加成（基础奖励）

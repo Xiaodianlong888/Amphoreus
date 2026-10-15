@@ -9,9 +9,9 @@ using Terraria.ID;
 using Terraria.UI;
 using Terraria.ModLoader;
 
-namespace Amphoreus.UI.XilianDialogueUI
+namespace Amphoreus.UI.Dialogue
 {
-    public class XilianDialogueUI : UIState
+    public class XiLianDialogueUI : UIState
     {
         private UIPanel _mainPanel;
         private UIPanel _portraitPanel;
@@ -200,7 +200,7 @@ namespace Amphoreus.UI.XilianDialogueUI
         {
             _currentNPC = null;
             _xilian = null;
-            ModContent.GetInstance<XilianDialogueSystem>().HideUI();
+            ModContent.GetInstance<XiLianDialogueSystem>().HideUI();
         }
 
         public override void Update(GameTime gameTime)

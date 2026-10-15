@@ -23,7 +23,7 @@ namespace Amphoreus.Tiles.XiLian_Tiles
             TileID.Sets.DisableSmartCursor[Type] = true;
 
             // 加载自定义贴图（98x100 头像框）
-            _portraitTexture = ModContent.Request<Texture2D>("Amphoreus/Items/XiLian_Items/XilianTouxiang").Value;
+            _portraitTexture = ModContent.Request<Texture2D>("Amphoreus/Items/XiLian_Items/XiLianTouxiang").Value;
 
             // 配置瓦片数据：7 格宽 × 7 格高
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3Wall); // 借用模板
@@ -46,7 +46,7 @@ namespace Amphoreus.Tiles.XiLian_Tiles
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 112, 112,
-                ModContent.ItemType<XilianTouxiang>());
+                ModContent.ItemType<XiLianTouxiang>());
         }
 
         // 完全自定义绘制：只在画作左上角绘制一次贴图

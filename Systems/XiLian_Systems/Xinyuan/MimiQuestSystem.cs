@@ -177,7 +177,7 @@ namespace Amphoreus.Systems.XiLian_Systems.Xinyuan
 
         public static void CheckQuestUnlockStatus()
         {
-            bool hasMetMimi = Systems.Ruwosuoshu_Systems.BookDataSystem.HasMetMimi;
+            bool hasMetMimi = Systems.Ruwosuoshu.BookDataSystem.HasMetMimi;
 
             foreach (var quest in AllQuests)
             {
@@ -334,9 +334,9 @@ namespace Amphoreus.Systems.XiLian_Systems.Xinyuan
         // 同步奖励状态到BookDataSystem（世界进度）
         private static void SyncRewardStatusToBookData()
         {
-            Systems.Ruwosuoshu_Systems.BookDataSystem.HasUnlockedLargeClaw = HasUnlockedLargeClaw;
-            Systems.Ruwosuoshu_Systems.BookDataSystem.HasUnlockedBuffAbility = HasUnlockedBuffAbility;
-            Systems.Ruwosuoshu_Systems.BookDataSystem.HasUnlockedDodgeAbility = HasUnlockedDodgeAbility;
+            Systems.Ruwosuoshu.BookDataSystem.HasUnlockedLargeClaw = HasUnlockedLargeClaw;
+            Systems.Ruwosuoshu.BookDataSystem.HasUnlockedBuffAbility = HasUnlockedBuffAbility;
+            Systems.Ruwosuoshu.BookDataSystem.HasUnlockedDodgeAbility = HasUnlockedDodgeAbility;
         }
 
         // 获取任务标题的方法（供显示用）

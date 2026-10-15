@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace Amphoreus.Players.NPCs_Players
+namespace Amphoreus.Players.NPCs
 {
     public class GuideQuillPlayer : ModPlayer
     {

@@ -1,4 +1,4 @@
-﻿using Amphoreus.Systems.Ruwosuoshu_Systems;
+﻿using Amphoreus.Systems.Ruwosuoshu;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

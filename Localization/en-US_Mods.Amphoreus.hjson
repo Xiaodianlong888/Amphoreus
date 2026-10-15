@@ -6,6 +6,31 @@ Keybinds: {
 }
 
 Buffs: {
+	SunflowerHerbTeaBuff: {
+		DisplayName: Sunflower Herb Tea
+		Description: Increases movement speed by 10%, reduces spawn rate, slowly regenerates life
+	}
+
+	MoonflowerHerbTeaBuff: {
+		DisplayName: Moonflower Herb Tea
+		Description: +50 max life, +80 max mana, slowly regenerates mana
+	}
+
+	ShiningRootHerbTeaBuff: {
+		DisplayName: Shining Root Herb Tea
+		Description: +5 defense, 5% damage reduction; an extra 5% and reduced aggro while standing still
+	}
+
+	FireblossomHerbTeaBuff: {
+		DisplayName: Fireblossom Herb Tea
+		Description: Immune to Frozen and Frostburn; attacks set enemies on fire
+	}
+
+	ChillthornHerbTeaBuff: {
+		DisplayName: Chillthorn Herb Tea
+		Description: Immune to On Fire and Burning; attacks slow enemies
+	}
+
 	BaoJinBi_Buff: {
 		DisplayName: Gold Explosion Buff
 		Description: Attacks have a chance to drop gold coins.
@@ -117,9 +142,39 @@ Buffs: {
 		DisplayName: Speed Hunter Buff
 		Description: Increases hunting speed.
 	}
+
+	XiLianDebuff: {
+		DisplayName: Xi Lian Debuff
+		Description: Mods.Amphoreus.Buffs.XiLianDebuff.Description
+	}
 }
 
 Items: {
+	SunflowerHerbTea: {
+		DisplayName: Sunflower Herb Tea
+		Tooltip: Increases movement speed by 10%, reduces spawn rate, slowly regenerates life
+	}
+
+	MoonflowerHerbTea: {
+		DisplayName: Moonflower Herb Tea
+		Tooltip: +50 max life, +80 max mana, slowly regenerates mana
+	}
+
+	ShiningRootHerbTea: {
+		DisplayName: Shining Root Herb Tea
+		Tooltip: +5 defense, 5% damage reduction; an extra 5% and reduced aggro while standing still
+	}
+
+	FireblossomHerbTea: {
+		DisplayName: Fireblossom Herb Tea
+		Tooltip: Immune to Frozen and Frostburn; attacks set enemies on fire
+	}
+
+	ChillthornHerbTea: {
+		DisplayName: Chillthorn Herb Tea
+		Tooltip: Immune to On Fire and Burning; attacks slow enemies
+	}
+
 	SFeirSummonItem: {
 		DisplayName: SFeir Summon
 		Tooltip: Summon SFeir
@@ -151,6 +206,21 @@ Items: {
 
 	BlackDomainItem: {
 		DisplayName: Black Domain Item
+		Tooltip: ""
+	}
+
+	MCArrowItem: {
+		DisplayName: M C Arrow Item
+		Tooltip: ""
+	}
+
+	MCBowItem: {
+		DisplayName: M C Bow Item
+		Tooltip: ""
+	}
+
+	XiLianTouxiang: {
+		DisplayName: Xi Lian Touxiang
 		Tooltip: ""
 	}
 }
@@ -638,6 +708,14 @@ NPCs: {
 				Enabled: I can turn back into Mimi~
 				Disabled: Wow, cheating right in front of me! No no~ Go defeat the Wall of Flesh first~
 			}
+
+			Quest: {
+				NoQuest: There is no quest available right now.
+				Accepted: Quest accepted. I have written down what is needed.
+				Complete: Thank you! The tea recipe has been added to the shop.
+			}
+
+			Unknown: ...I think I spaced out for a moment.
 		}
 
 		// 按钮文本
@@ -647,6 +725,7 @@ NPCs: {
 			OracleCard: Oracle Cards
 			Shop: Shop
 			Transform: Transform
+			Quest: Quest
 		}
 
 		// 昔涟城镇NPC心情文本
@@ -665,6 +744,234 @@ NPCs: {
 			DislikeBiome: 我不喜欢{BiomeName}。
 			LikeNPC: 我喜欢{NPCName}。
 		}
+
+		ShopConditions: {
+			Chapter1: Herb Tea Chapter I completed
+			Chapter2: Herb Tea Chapter II completed
+			Chapter3: Herb Tea Final Chapter completed
+		}
+
+		// ===== Environment dialogue (time / weather / biome) =====
+		EnvironmentChat: {
+			Morning:
+				'''
+				The sunshine is so warm.
+				A brand new day begins.
+				I wonder if something fun will happen today?
+				'''
+			Night:
+				'''
+				The moon is so quiet.
+				The stars are twinkling, as if waving hello to me♪
+				Be careful walking at night, okay?
+				See you tomorrow♪
+				'''
+			Rain:
+				'''
+				It is raining... I am going to hide in your pocket.
+				The rain washes the whole world so clean.
+				Did you get soaked? Shall we shelter together for a while?
+				'''
+			Thunderstorm:
+				'''
+				Boom--! (trembles a little)
+				The lightning is so bright, but the sound is a bit scary...
+				Bzzt--! Let us find somewhere to hide...
+				'''
+			Windy:
+				'''
+				Whoa-- my hair is all blown around!
+				The wind flipped several pages of my little notebook...
+				Walk a little slower, the wind is too strong.
+				'''
+			BloodMoon:
+				'''
+				The moon tonight... looks a little red.
+				My chest feels heavy, a bit uncomfortable.
+				Be careful if you go out tonight.
+				'''
+			Eclipse:
+				'''
+				Why did the sky go dark?
+				The sun is gone... that is a little strange.
+				Did something eat the sun?
+				'''
+			Party:
+				'''
+				So lively! I want to join in too~
+				The ribbons are fluttering, so pretty.
+				The Party Girl said there will be fireworks tonight. Shall we go watch?
+				'''
+			SlimeRain:
+				'''
+				So many gooey little blobs! But they look pretty dangerous!
+				It reminds me -- when I was still Mimi, I was almost swallowed by a giant slime! Good thing I can fly!
+				It is raining~ ...? Slime?
+				'''
+			LanternNight:
+				'''
+				What a beautiful night! Let us take a picture together♪
+				So many lanterns, like stars, twinkling one by one.
+				The lanterns are like meteors flying backwards, rising from the ground to the horizon~
+				'''
+			Graveyard:
+				'''
+				The mood has turned so gloomy......
+				So much fog... so dark... I can not see clearly... and thunder now and then......
+				(holds your hand tightly)
+				'''
+			Forest:
+				'''
+				There are so many little animals in the forest.
+				When the wind blows, the leaves rustle as if singing.
+				I could sit under a tree all day long.
+				'''
+			ForestNight:
+				'''
+				Fireflies are flying, like little stars.
+				The forest is so quiet at night, a little mysterious.
+				They say paired fairies appear in the forest at night!
+				'''
+			Hallow:
+				'''
+				A rainbow! There really is a rainbow!
+				This place is so pretty, like a fairy tale.
+				Do you think unicorns will like me?
+				'''
+			Corruption:
+				'''
+				The air here... feels a little oppressive.
+				Those purple things... make me want to watch from far away.
+				Partner, please be careful.
+				'''
+			Crimson:
+				'''
+				So much red...
+				I feel like something bad is watching us.
+				Do not walk too fast, I need to stay close to you.
+				'''
+			Jungle:
+				'''
+				So lively, there are sounds everywhere.
+				Butterflies! Pink butterflies!
+				Careful, the flowers over there bite...
+				'''
+			Snow:
+				'''
+				Snow is soft, it makes a crunching sound when you step on it.
+				It is a bit cold... may I lean a little closer to you?
+				Look, the snowflake lands on my palm and melts right away.
+				'''
+			Desert:
+				'''
+				So hot... I need to find a shady spot.
+				When the wind blows, the sand gets in your eyes.
+				There is water by the oasis! Shall we go take a look?
+				'''
+			Ocean:
+				'''
+				The sea breeze is salty and smells so nice.
+				The waves lap against the beach, layer after layer.
+				Look! Dolphins!
+				'''
+			Mushroom:
+				'''
+				The mushrooms glow! So amazing~
+				The air here is damp and very comfortable.
+				What a huge mushroom tree! I wonder if there are little fairies inside?
+				'''
+			Hell:
+				'''
+				So hot... so hot...
+				The lava is bubbling, like boiling soup.
+				Careful! Do not fall in.
+				'''
+		}
+
+		ChatMode.NPCTalk:
+			'''
+			Mr. Guide always gives me gentle advice, like a talking big tree♪
+			Whenever I pass Mr. Guide's hut, he looks up and asks with a smile, "How was your day?" His advice is always so long, but listening to it, I stop feeling hurried. Every word of his is soft -- like wind~
+			Mr. Guide's voice reminds me of the rustle of leaves in the wind♪
+			When I plant flowers with Sister Dryad, even the wind smells sweet~
+			Sister Dryad knows I love pink, so she planted a patch of pink flowers in the most visible spot of the garden. She never asks where I came from or where I am going; she just hands me a flower now and then and says, "This one suits you." I crouch beside her watching her loosen soil, water, and talk to every leaf -- that quiet makes me feel the world was always meant to be like this.
+			When Sister Dryad is silent, I still feel like she is chatting with me.
+			Princess is my favourite pink, and we promised to have afternoon tea together next time♪
+			Whenever Princess sees me, she lifts her skirt and runs over, afraid of making me wait even a second. She says, "Pink is the gentlest colour in the world," then takes my hand and insists I try the cookies she just baked. They are a little too sweet, but when she asks with bright eyes, "Is it good?" I nod and say, "Mm!"
+			When I am with Princess, the whole world turns pink♪
+			The little Angler talks tough, but I know he just wants someone to play with♪
+			Whenever the little Angler sees me he yells, "You again?!" But when I hand him the fish I caught, he freezes for a moment, then mumbles, "...Thanks." I know he does not really hate me -- he just does not know how to talk to people properly. So every time I pass by, I stop and ask, "Did you catch a big one today?" He has never answered, but I saw the corner of his mouth twitch.
+			The little Angler's rod is always waiting for a fish willing to bite.
+			Mr. Demolitionist always says it is dangerous, but he is the most careless one -- I will bring you a charm next time♪
+			Mr. Demolitionist always says with a straight face, "Stay back, it is dangerous," yet he leans in closest whenever he tests explosives. Once I saw him from afar, covered in soot from a blast, and ran over. His first reaction was to wave and say, "I am fine, I am fine." Later I secretly left a small bag of charms at his door, and the next day it was gone. I think he probably kept it.
+			Mr. Demolitionist is a gentle dwarf; his gentleness just goes off with a "bang".
+			Mr. Arms Dealer looks at people a little strangely... but after I tidied his ammo boxes, he seemed to soften just a bit?
+			Mr. Arms Dealer always speaks with a "keep away" air, but once when I was tidying his counter he just stood there watching without a word. When I turned around afterwards, his look had changed -- not that strange look, but another one, a little like embarrassment. After that, whenever he sees me he gives a small nod and goes back to wiping his guns. I think that is quite good enough.
+			Mr. Arms Dealer's gentleness is hidden at the very bottom of the ammo box.
+			Captain Pirate's parrot is such a talker -- "You are so pretty!" -- see, even it says so♪
+			Captain Pirate has a huge voice; the whole town hears him shout. But his parrot is different -- it flies over, lands on my shoulder, and says softly, "You are so pretty." When Captain sees it, he turns his face away and pretends he did not.
+			Captain Pirate's parrot says so many things for him.
+			Mr. Tax Collector is just very lonely. When I greet him as I pass, his eyes light up for a moment♪
+			Mr. Tax Collector always frowns. But once when I passed and greeted him, he paused, and that "mm" came out very quietly, as if he had not spoken in a long time. After that I called out "Hello, Mr. Tax Collector" every time I passed, and his reply grew a tiny bit louder each time.
+			Mr. Tax Collector's eyes are actually lovely when they light up.
+			Miss Zoologist always wants to pet me when I turn into Mimi... hee, being petted is actually quite nice♪
+			Every time Miss Zoologist sees me as Mimi, her eyes light up and she stares. She never dares to say "let me touch", but her eyes say it all. Once I turned into Mimi on my own and crouched in front of her; she froze for a long time, then carefully reached out, touched an ear, and pulled back at once. A few seconds later she reached out again and touched my tail. That whole afternoon she did nothing but pet ears and tail.
+			Miss Zoologist has a thick notebook filled with every kind of animal. One page is kept just for Mimi, with "the softest pink creature in the world" written beside it.
+			Sister Stylist's hands are so light and soft; after a haircut I always feel like a different person~
+			When Sister Stylist cuts my hair she never talks, just stands there quietly, snip by snip. But her hands really are light -- so light that sometimes I forget I am getting a haircut and just want to close my eyes and listen to the scissors. When she finishes she steps back, tilts her head to look for a moment, then nods. That nod sounds better than any praise.
+			Sister Stylist's scissors cut the gentlest shapes.
+			Sister Dye Trader knows so much about pink! We talked for a whole afternoon, and she said she would mix me a "Cyrene special pink" next time♪
+			Sister Dye Trader's shop is full of colourful bottles, and every colour has a name. That afternoon she took out every pink bottle in the shop and we picked together. In the end she said, "None of these are quite right; I will mix you one next time." I asked what kind of pink, and she said mysteriously, "The kind in your eyes when you look at me."
+			Sister Dye Trader's bottles hold my favourite colour♪
+			The drink Mr. Tavernkeep pours for me, I only sip a little -- I save the rest for you♪
+			Mr. Tavernkeep says very little. Whenever he sees me he just nods and slides a drink over. He never asks why I do not finish it, and never asks who "you" is. But once when I came, beside the cup he pushed over there was a small plate with two cookies on it. I looked up at him, and he was already wiping other cups.
+			Mr. Tavernkeep's cup is always filled just right.
+			Mr. Cyborg talks so strangely... but when he says "warm life signal detected", my heart feels warm too♪
+			Mr. Cyborg speaks in fits and starts, and sometimes I cannot understand him. But every time I come close he looks down at me and says, "Warm life signal detected." At first I did not know what it meant; later I thought it probably means "you are here". So now whenever I pass, I whisper, "Mr. Cyborg detected too".
+			Mr. Cyborg's signal -- I detect it too♪
+			Mr. Golfer taught me to swing, and the ball flew into the bushes -- he said, "You did very well" -- hee♪
+			Mr. Golfer is so serious when teaching a swing: stance, direction, deep breath, every step explained at length. But every time I swing, the ball goes who knows where. Once it flew into the bushes and he searched for ages, then came back and said, "That tree was missing a ball; you filled the gap." Later I thought he might not be teaching me golf, but how to accept a ball flying into the bushes.
+			Mr. Golfer's "that was already very good" catches every stray ball.
+			Mr. Wizard always says things I do not understand... but the crystal ball he gave me glows at night, like a star♪
+			Mr. Wizard's house is piled with books; you have to weave around to walk. He speaks like chanting; I do not quite understand, but whenever I pass he lifts his head from the books and says something. Once he pressed a crystal ball into my hands and said, "Look at it at night." That night it really glowed -- faint, warm, like a star cupped in my palm. After that I put it by my bed every night, and it stayed lit until I fell asleep. I think that was his chant, sealed inside the crystal ball.
+			Mr. Wizard's crystal ball is like a moon kept in a pocket.
+			Mr. Witch Doctor is so focused making charms that I hardly dare breathe beside him --
+			When Mr. Witch Doctor makes charms, he becomes a different person. Usually he speaks little and moves slowly, but the moment he picks up his tools his eyes brighten and his hands turn quick and precise. I crouch nearby and watch for a whole afternoon. Occasionally he glances up at me, then goes back to work. When it is done he hands me the charm without a word, but that look seems to say, "This is for you."
+			Mr. Witch Doctor's charms hold a whole afternoon of quiet.
+			Mr. Clothier talks like an old grandpa, but his needlework is amazing! He said he would teach me to embroider small flowers♪
+			Mr. Clothier speaks slowly, every sentence like a memory. But his hands are fast -- the needle moves as if alive, and a small flower appears in moments. He said he would teach me, so I leaned in to watch, and he murmured as he worked, "Thread it through like this, then loop it back like that." I could not learn it, but he was never impatient, only saying, "Take your time." I think he did not really want to teach me; he just wanted me to stay nearby.
+			Mr. Clothier's needle and thread embroider the gentlest of times.
+			Mr. Truffle said others want to eat him... hee, I would not. I only want to hear his mushroom stories♪
+			Mr. Truffle lives in the mushroom fields, surrounded by glowing mushrooms. Whenever he sees me coming he shrinks back into the mushroom patch with only his eyes showing. But I just sit down beside him and do nothing, looking at the glowing mushrooms. After a while he comes out on his own and asks quietly, "Do you want to hear a mushroom story?" Then he starts -- how mushrooms push up from the soil, how they grow so fast when it rains, how some of them glow. As he talks he stops shrinking. As I listen I lose track of time.
+			Mr. Truffle's mushroom stories pop up one by one, like little umbrellas after rain.
+			When Miss Mechanic fixes things I hand her wrenches -- I got it wrong several times, but she was not angry!
+			Miss Mechanic is so focused when repairing that she cannot hear anyone speak. But when I handed her the wrong wrench she stopped, glanced at it, and said, "Not that one, the one beside it." No scolding, no impatience, just a soft word, then she continued. Later I thought she might not be teaching me to pass wrenches, but telling me: it is fine to be wrong, just start again.
+			Miss Mechanic's wrench can tighten every uneasy heart.
+			Miss Party Girl is so enthusiastic! She dragged me into dancing for an hour, and my legs are still weak... but it was fun♪
+			In Miss Party Girl's world, every day should be a festival. She comes running to the shop days early, whispers mysteriously, "The night after tomorrow, the plaza, do not tell anyone." Then on the day she pulls me along hanging ribbons, blowing balloons and setting candles, shouting as she works, "Higher here! No, lower! Fine, leave it!" After a whole afternoon the plaza is a riot of colour. My arms ache, but watching her spin in the middle of the plaza saying "Perfect!", I feel happy too.
+			Miss Party Girl's ribbons can turn any day into a festival.
+			Mr. Goblin Tinkerer huddles in a corner hammering away; I watch from afar, afraid to disturb him -- but the little clockwork toys he makes are so fun!
+			Mr. Goblin Tinkerer always huddles in a corner, head down, hammering, as if nothing around him matters. I crouch far away and watch. Once he suddenly looked up, saw me, paused, then bent back to his work. After a while he tossed something over. I picked it up -- a tiny clockwork spring that moves when you twist it. I looked up to thank him, but he had already curled back into his corner.
+			Mr. Goblin Tinkerer's clockwork spring turns out a tiny smile with one twist.
+			Miss Nurse talks tough, but her hands are so gentle when bandaging me. "Be careful next time!" -- hee, I know♪
+			Whenever Miss Nurse sees I am hurt she frowns and says, "Hurt again? What on earth are you doing?" But her hands are especially gentle -- gentle when disinfecting, gentle when wrapping the bandage. When she finishes she pats the bandage lightly and says, "Be careful next time." That pat feels warmer than any words of concern. So whenever I am hurt, she is actually the first person I think of.
+			Miss Nurse's bandage wraps the wound -- and the worry.
+			Mr. Painter painted a picture for me! Just a few small pink flowers, but I hung it up and look at it every day♪
+			Mr. Painter does not talk much, but whenever I pass I see him painting on the walls. Once he suddenly called me over and handed me a small painting -- a few pink flowers, crooked but very earnest. He said, "This is for you." I asked why he painted it; he hesitated a long time, then said, "Because you said you like pink." I hung it in my little shop, and I see it every day.
+			Mr. Painter's paintings always hide feelings left unsaid♪
+			Miss Steampunker's hat is so tall! I look up at her, and she looks down and says, "Who is the little sister looking for?" -- hee, I am not little!
+			Miss Steampunker's hat is especially tall; every time I look up at her I feel she is like a tower. But her voice drifts down softly from that height, not at all stern. Once while I watched her tinkering with a machine, she suddenly looked down and said, "Does the little sister want to learn?" I paused, then nodded. She pulled me over and taught me step by step. I learned nothing, but that afternoon the whole room full of steam has stayed drifting in my memory.
+			Miss Steampunker's hat hides a whole afternoon of warmth.
+			Mr. Travelling Merchant always carries odd and curious things; I could crouch at his stall and watch all day~
+			Mr. Travelling Merchant's stall appears in a different part of town each time -- left of the plaza today, maybe right of it tomorrow. His stall has everything: pretty clothes, curious little animals, interesting trinkets. Every time I pass I crouch down to look, and he never shoos me away, just sits nearby waiting. Sometimes I ask, "What is this?" and he tells a mysterious story about where it came from and what happened on the way. The stories are more interesting than the goods. So I often leave after the story without buying anything. He is not upset, just says, "Come listen again next time."
+			Mr. Travelling Merchant's stall holds the secrets of the whole world.
+			Santa Claus says, "Good children get presents." I secretly asked him, "Then may I have a star?" He laughed for a long time♪
+			Santa Claus only appears on the coldest few days of the year. He wears a thick red coat and carries a big sack, walking slowly. Once I secretly asked if I could have a star. He paused, then laughed and laughed, his beard shaking and the sack swaying. When he finished laughing he bent down, looked at me, and said, "A star? I already gave you one." I asked where, and he pointed at my eyes. Now every time I look at the stars I remember what he said.
+			Santa Claus's gifts sometimes take a very long time to find.
+			Mr. Skeleton Merchant sells such strange things... but he is even stranger -- a skeleton who fears getting wet in the rain. I want to hold an umbrella for him♪
+			The first time Mr. Skeleton Merchant saw me he gave me a fright. But when he spoke, his voice was gentler than anyone's. What he sells is indeed strange, but whenever I pass he quietly slips me a little something and says, "For you."
+			Inside Mr. Skeleton Merchant's bones is a softer heart than anyone's.
+			'''
 	}
 }
 
@@ -677,6 +984,8 @@ Projectiles: {
 	QuillInkProjectile.DisplayName: Ink Projectile
 	Mimi_zhua_NoWall.DisplayName: Mimi_zhua_ No Wall
 	C13x.DisplayName: C13x
+	EraserProjectile.DisplayName: Eraser Projectile
+	MCArrowProjectile.DisplayName: M C Arrow Projectile
 }
 
 Configs: {
@@ -816,6 +1125,32 @@ Systems: {
 					CompletionText: The pendant regained its power! Now Mimi can help you dodge dangers!
 					RewardDescription: Unlocks dodge ability
 					LockedHint: Requires defeating Skeletron
+				}
+			}
+
+			XiLianQuest: {
+				System: {
+					NewQuestUnlocked: Cyrene seems to have a new idea...
+					QuestAccepted: Quest accepted: {0}
+					QuestCompleteReward: New herbal teas have been added to the shop!
+				}
+
+				HerbTeaChapter1: {
+					Title: Herb Tea - Chapter I
+					Description: Collect 5 Dayblooms and 5 Moonglows. I want to brew a tea that warms the heart.
+					CompletionText: Aroma fills the air... Thank you. Here is the Sunflower Herb Tea recipe.
+				}
+
+				HerbTeaChapter2: {
+					Title: Herb Tea - Chapter II
+					Description: Collect 5 Blinkroots and 5 Waterleaves. This time the tea might gain magical power.
+					CompletionText: The fragrance of Moonflower Herb Tea... Truly dreamlike.
+				}
+
+				HerbTeaChapter3: {
+					Title: Herb Tea - Final Chapter
+					Description: Collect 5 Fireblossoms, 5 Shiverthorns and 5 Deathweeds. This final recipe is a challenge.
+					CompletionText: All three teas are ready. I hope you enjoy them.
 				}
 			}
 		}

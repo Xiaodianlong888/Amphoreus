@@ -5,13 +5,14 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace Amphoreus.Systems.Ruwosuoshu_Systems
+namespace Amphoreus.Systems.Ruwosuoshu
 {
     public class BookDataSystem : ModSystem
     {
         // === 世界数据 ===
         public static List<WishTemplate> WishTemplates { get; private set; } = new List<WishTemplate>();
         public static bool HasMetMimi { get; set; } = false;
+        public static bool HasMetXilian { get; set; } = false;
         public static Vector2 BookIconPosition { get; set; } = Vector2.Zero;
 
         // 奖励状态（世界进度）
@@ -77,6 +78,12 @@ namespace Amphoreus.Systems.Ruwosuoshu_Systems
             HasMetMimi = true;
         }
 
+        // 当与昔涟对话时调用（用于解锁花茶任务第一章）
+        public static void OnXiLianDialogue()
+        {
+            HasMetXilian = true;
+        }
+
         // 保存世界数据
         public override void SaveWorldData(TagCompound tag)
         {
@@ -87,6 +94,7 @@ namespace Amphoreus.Systems.Ruwosuoshu_Systems
             tag["BookIconY"] = BookIconPosition.Y;
             tag["HasUnlockedXilian"] = HasUnlockedXilian;
             tag["HasMetMimi"] = HasMetMimi;
+            tag["HasMetXilian"] = HasMetXilian;
             tag["HasUnlockedLargeClaw"] = HasUnlockedLargeClaw;
             tag["HasUnlockedBuffAbility"] = HasUnlockedBuffAbility;
             tag["HasUnlockedDodgeAbility"] = HasUnlockedDodgeAbility;
@@ -112,6 +120,9 @@ namespace Amphoreus.Systems.Ruwosuoshu_Systems
             if (tag.ContainsKey("HasMetMimi"))
                 HasMetMimi = tag.GetBool("HasMetMimi");
 
+            if (tag.ContainsKey("HasMetXilian"))
+                HasMetXilian = tag.GetBool("HasMetXilian");
+
             if (tag.ContainsKey("HasUnlockedLargeClaw"))
                 HasUnlockedLargeClaw = tag.GetBool("HasUnlockedLargeClaw");
             if (tag.ContainsKey("HasUnlockedBuffAbility"))
@@ -124,6 +135,7 @@ namespace Amphoreus.Systems.Ruwosuoshu_Systems
         {
             // 清除非持久化状态
             HasMetMimi = false;
+            HasMetXilian = false;
             // 但保留世界进度相关的奖励状态，它们在SaveWorldData中已保存
         }
 

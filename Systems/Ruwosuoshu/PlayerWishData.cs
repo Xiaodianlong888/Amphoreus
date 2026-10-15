@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace Amphoreus.Systems.Ruwosuoshu_Systems
+namespace Amphoreus.Systems.Ruwosuoshu
 {
     public class PlayerWishData : ModPlayer
     {

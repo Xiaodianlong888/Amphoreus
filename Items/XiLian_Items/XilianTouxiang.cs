@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace Amphoreus.Items.XiLian_Items
 {
-    public class XilianTouxiang : ModItem
+    public class XiLianTouxiang : ModItem
     {
         public override void SetStaticDefaults()
         {

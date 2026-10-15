@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -7,7 +7,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace Amphoreus.Systems
+namespace Amphoreus.NPCs
 {
     public class GuideDialogueSystem : ModSystem
     {
@@ -132,7 +132,7 @@ namespace Amphoreus.Systems
                 }
 
                 // 修改对话内容 - 使用本地化文本
-                chat = GetLocalizedText("GuideDialogue.GiveQuill");
+                chat = GetLocalizedText("Systems.GuideDialogue.GiveQuill");
             }
         }
 
@@ -164,7 +164,7 @@ namespace Amphoreus.Systems
             item.SetDefaults(itemType);
             string itemName = item.Name;
 
-            string obtainedText = GetLocalizedText("GuideDialogue.ObtainedItem", player.name, itemName);
+            string obtainedText = GetLocalizedText("Systems.GuideDialogue.ObtainedItem", player.name, itemName);
             Main.NewText(obtainedText, 255, 200, 255);
 
             // 同时添加到玩家的背包中，避免物品掉落在地上

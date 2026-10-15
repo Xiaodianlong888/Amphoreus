@@ -4,7 +4,7 @@ using Terraria.ID;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-namespace Amphoreus.Systems.WorldSystems
+namespace Amphoreus.Systems.World
 {
     public class BlackDomainSpreadSystem : ModSystem
     {

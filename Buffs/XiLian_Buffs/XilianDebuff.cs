@@ -5,10 +5,10 @@ using Terraria.ModLoader;
 
 namespace Amphoreus.Buffs.XiLian_Buffs
 {
-    public class XilianDebuff : ModBuff
+    public class XiLianDebuff : ModBuff
     {
 
-        public override string Texture => "Amphoreus/Buffs/XiLian_Buffs/XilianDebuff";
+        public override string Texture => "Amphoreus/Buffs/XiLian_Buffs/XiLianDebuff";
         public override void Update(NPC npc, ref int buffIndex)
         {
             // 1. 基础效果：减速 + 降防（契合冰+记忆）
